@@ -1374,8 +1374,8 @@ iframe::-webkit-scrollbar {
 	  
 	  #closeNewsButton {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 139px;
+  right: 310px;
   padding: 10px;
   width: 40px;
   height: 40px;
@@ -1854,7 +1854,7 @@ overflow: hidden;
   position: fixed;
   top: 146px;
   left: 15px;
-  width: 49.5%; /* Adjust width as per your requirement */
+  width: 46%; /* Adjust width as per your requirement */
   height: 75%;
   padding: 20px;
   border-radius: 15px;
@@ -1918,6 +1918,28 @@ overflow: hidden;
   margin: 2px 0;
   border-radius: 2px;
 }
+#dropdownMenu button:hover {
+  background: #f0f0f0;
+  cursor: pointer;
+}
+
+.menu-container {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+#dropdownMenu {
+  display: none;
+  position: absolute;
+  right: 0;
+  background: white;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 
 /* Styling for individual posts */
 /*.post {
@@ -2357,11 +2379,11 @@ top: -8px !important;
 left: -8px !important;
 }
   #overlayContainer {
-    width: 46% !important;
+    width: 46%;
     padding-top: 22px !important;
     padding-left: 22px;
     row-gap: 260 !important;
-    height: 75% !important;
+    height: 75%;
     gap: px !important;
     grid-auto-rows: minmax(300px, auto) !important;
   }
@@ -3272,7 +3294,7 @@ margin-bottom: 1px;
 <body>
   <div id="globeViz" style="display:none"></div>
   <div class="carousel-header">
-    <button id="minimizeCarouselBtn">Minimize Ads</button>
+    <button id="minimizeCarouselBtn">Hide Ads</button>
   </div>
   <div class="carousel-header2">
     <button id="showPromoCodesBtn" style="display:none">Promo Codes</button>
@@ -3376,7 +3398,16 @@ margin-bottom: 1px;
             Drag to minimize or maximize
         </div>
         
-    
+    <!-- Vertical three-dots button -->
+  <div class="menu-container" style="position: absolute; display: flex; top: 30px; right: 30px;">
+    <button id="menuButton" style="border: none; display: flex; background: transparent; cursor: pointer;">
+      &#x22EE; <!-- Vertical three-dots icon -->
+    </button>
+    <div id="dropdownMenu" style="display: none; position: absolute; right: 0; background: white; border: 1px solid lightgray; border-radius: 5px; z-index: 1000;">
+      <button id="airbnbOption" style="display: block; width: 100%; padding: 10px; border: none; background: none; text-align: left;">Airbnb Posts</button>
+      <button id="expediaOption" style="display: block; width: 100%; padding: 10px; border: none; background: none; text-align: left;">Expedia Posts</button>
+    </div>
+  </div>
     <button id="closeBtn" style="display: block;"class="close-btn">X</button>
     <div class="drag-handle" style="display: block;">
       <div class="line" style="display: block;"></div>
@@ -3441,9 +3472,14 @@ margin-bottom: 1px;
 <!-- Instructions Modal -->
 <div id="instructionsOverlay" class="hidden">
   <div class="instruction-step hidden" id="zoomInstruction">
-    <img src="js/hands.png" alt="Scroll Gesture" class="glove-hand">
+    <img src="js/travel-4.png" alt="Button Click" class="glove-hand">
     <div class="pulsating-dot" style="top: 50%; left: 50%;"></div>
     <p class="instruction-text">Welcome to Horizon Flights! <br> Use your mouse or trackpad to zoom in and out</p>
+  </div>
+  <div class="instruction-step hidden" id="themeInstruction">
+    <img src="js/travel-4.png" alt="Button Click" class="glove-hand">
+    <div class="pulsating-dot" style="top: 70%; left: 60%;"></div>
+    <p class="instruction-text">The globe is interactive! drag around and click on the markers to view the latest hotels & airbnb's in each region!</p>
   </div>
   <div class="instruction-step hidden" id="dragInstruction">
     <img src="js/left-click.png" alt="Drag Gesture" class="glove-hand">
@@ -3461,14 +3497,14 @@ margin-bottom: 1px;
     <p class="instruction-text">Click outside the blue buttons to close the airbnb widgets</p>
   </div>
   <div class="instruction-step hidden" id="themeInstruction">
-    <img src="js/right-arrow.png" alt="Button Click" class="glove-hand">
+    <img src="js/day-and-night-2.png" alt="Button Click" class="glove-hand">
     <div class="pulsating-dot" style="top: 70%; left: 60%;"></div>
     <p class="instruction-text">Click the buttons on the side to switch between day and night theme</p>
   </div>
   <div class="instruction-step hidden" id="themeInstruction">
     <img src="js/toggle-4.png" alt="Button Click" class="glove-hand">
     <div class="pulsating-dot" style="top: 70%; left: 60%;"></div>
-    <p class="instruction-text">Use the toggle buttons to switch between searches for flights, hotels, cities and countries</p>
+    <p class="instruction-text">Use the buttons to switch between searches for flights, hotels, cities and countries</p>
   </div>
   <div class="instruction-step hidden" id="themeInstruction">
     <img src="js/seo-and-web.png" alt="Button Click" class="glove-hand">
@@ -3478,7 +3514,7 @@ margin-bottom: 1px;
   <div class="instruction-step hidden" id="themeInstruction">
     <img src="js/page-refresh.png" alt="Button Click" class="glove-hand">
     <div class="pulsating-dot" style="top: 70%; left: 60%;"></div>
-    <p class="instruction-text">Refresh the page to perform a new search</p>
+    <p class="instruction-text">Clear Filters to clear the search bar and hide search results <br>or<br> refresh the page to perform a new search</p>
   </div>
   <div class="instruction-step hidden" id="themeInstruction">
     <img src="js/travel-4.png" alt="Button Click" class="glove-hand">
@@ -3491,7 +3527,7 @@ margin-bottom: 1px;
     <p class="instruction-text">Sign Up for Exclusive Offers! Subscribe to our email list and get access to exclusive promotions and deals.</p>
     <form id="emailForm" onsubmit="submitEmail(event)">
       <input style="justify-content: center; justify-items: center; align-items: center;"type="email" id="emailInput" placeholder="Enter your email" required />
-      <button style="justify-content: center; justify-items: center; align-items: center; margin-left: 50px;"type="submit" class="popup-submit-btn">Sign Up</button>
+      <button style="justify-content: center; justify-items: center; align-items: center; margin-left: 42.5px;"type="submit" class="popup-submit-btn">Sign Up</button>
     </form>
   </div>
   <div class="instruction-step hidden" id="themeInstruction">
@@ -3595,8 +3631,6 @@ margin-bottom: 1px;
     <img src="js/world.png" style="width: 16px; height: 16px; margin-top: -7px; margin-left: -7.9px;" class="logo-lng-setting">
   <select id="languageSelect" style="display: none !important" class="hidden">
     <option value="en-gb">English (UK)</option>
-    <option value="fr-fr">French</option>
-    <option value="de-de">German</option>
   </select>
 </button>
   <button id="searchBtn" class="airbnb-button">Search</button>
@@ -3745,7 +3779,7 @@ margin-bottom: 1px;
   <iframe
     id="dayTicker"
     class="iframe-container"
-    src="https://rss.app/embed/v1/ticker/3j0jw7ksCqckLNRl"
+    src="https://rss.app/embed/v1/ticker/A443LjY7WUDJRzOm"
     frameborder="0"
     sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-modals allow-popups-to-escape-sandbox"
   ></iframe>
@@ -3772,7 +3806,7 @@ margin-bottom: 1px;
     <iframe
   id="trivagoIframeContainer"
   class="iframe-container"
-  src="https://rss.app/embed/v1/ticker/3j0jw7ksCqckLNRl"
+  src="https://rss.app/embed/v1/ticker/A443LjY7WUDJRzOm"
   frameborder="0"
   sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-modals allow-popups-to-escape-sandbox"
 ></iframe>
@@ -3944,7 +3978,7 @@ gl_FragColor = vec4(glowColor, intensity);
     CSS2DRenderer,
     CSS2DObject,
   } from "https://unpkg.com/three@0.136.0/examples/jsm/renderers/CSS2DRenderer.js";
-    import { RGBELoader } from 'https://unpkg.com/three@0.136.0/examples/jsm/loaders/RGBELoader.js';
+    //import { RGBELoader } from 'https://unpkg.com/three@0.136.0/examples/jsm/loaders/RGBELoader.js';
 	  // Import necessary post-processing modules
 //import { EffectComposer } from 'https://unpkg.com/three@0.136.0/examples/jsm/postprocessing/EffectComposer.js?v=1';
 //import { RenderPass } from 'https://unpkg.com/three@0.136.0/examples/jsm/postprocessing/RenderPass.js?v=1';
@@ -4012,7 +4046,7 @@ const auth = getAuth(app);
     // Save the email data in Firestore
     setDoc(mailingList, { email: email, id: postId }) // Save the email and unique ID
         .then(() => {
-            alert(`Email ${email} successfully added to Mailing list!.`);
+            alert(`Email ${email} successfully added to Mailing list!`);
             // Show a success message to the user
             alert("Thank you for subscribing!");
             // Reset the input field
@@ -4079,7 +4113,7 @@ document.getElementById("loginButton").addEventListener("click", () => {
         googleButton.style.backgroundColor = "#4285F4";
         googleButton.style.color = "white";
         googleButton.style.border = "none";
-        googleButton.style.padding = "10px 20px";
+        googleButton.style.padding = "10px 29px";
         googleButton.style.borderRadius = "5px";
         googleButton.style.cursor = "pointer";
         googleButton.style.marginBottom = "10px";
@@ -4405,7 +4439,7 @@ document.addEventListener('DOMContentLoaded', function () {
       // Hide both carousels
       carouselContainer1.style.display = 'none';
       carouselContainer2.style.display = 'none';
-      minimizeButton.textContent = 'Maximize Ads';
+      minimizeButton.textContent = 'Show Ads';
     } else {
       // Show the appropriate carousel (default is carousel 1)
       if (showPromoCodesBtn.textContent === 'Hide Promo Codes') {
@@ -4413,7 +4447,7 @@ document.addEventListener('DOMContentLoaded', function () {
       } else {
         carouselContainer1.style.display = 'flex';
       }
-      minimizeButton.textContent = 'Minimize Ads';
+      minimizeButton.textContent = 'Hide Ads';
     }
   });
 });
@@ -5656,6 +5690,37 @@ let isDay = true; // Track whether it's currently day or night
             
             <h2 style="margin-bottom: 15px; color: rgba(255, 255, 255, 1);">Ready to Book?</h2>
             <p style="margin-bottom: 30px;">Don’t wait! These deals won’t last long. Click the links to book your perfect stay in São Paulo.</p>
+
+            <!-- New Blog Posts -->
+    <h2 style="margin-bottom: 15px; color: rgba(255, 255, 255, 1);">A Beginner’s Guide to Booking Cheap Flights</h2>
+    <img src="js/cheap-flights-guide.jpg" alt="Booking Cheap Flights" style="width: 100%; height: auto; border-radius: 10px; margin-bottom: 15px;">
+    <p style="margin-bottom: 15px;">Master the art of finding cheap flights with these insider tips and tricks. Save money and travel smarter!</p>
+    <p style="margin-bottom: 30px;"><a href="A_Beginners_Guide_to_Booking_Cheap_Flights.html" target="_blank" style="color: rgba(255, 255, 255, 1); text-decoration: underline;">Read More</a></p>
+
+    <h2 style="margin-bottom: 15px; color: rgba(255, 255, 255, 1);">Affordable Winter Getaways Around the World</h2>
+    <img src="js/winter-getaways--.jpg" alt="Winter Getaways" style="width: 100%; height: auto; border-radius: 10px; margin-bottom: 15px;">
+    <p style="margin-bottom: 15px;">Escape the cold or embrace it! Here are the best budget-friendly winter holiday destinations for 2025.</p>
+    <p style="margin-bottom: 30px;"><a href="Affordable_Winter_Getaways_Around_the_World.html" target="_blank" style="color: rgba(255, 255, 255, 1); text-decoration: underline;">Read More</a></p>
+
+    <h2 style="margin-bottom: 15px; color: rgba(255, 255, 255, 1);">Best Cities for Solo Travel in 2025</h2>
+    <img src="js/solo-travel-cities--.jpg" alt="Solo Travel" style="width: 100%; height: auto; border-radius: 10px; margin-bottom: 15px;">
+    <p style="margin-bottom: 15px;">From Tokyo to Lisbon, explore the safest and most exciting cities for solo travelers in 2025.</p>
+    <p style="margin-bottom: 30px;"><a href="Best_Cities_for_Solo_Travel_in_2025.html" target="_blank" style="color: rgba(255, 255, 255, 1); text-decoration: underline;">Read More</a></p>
+
+    <h2 style="margin-bottom: 15px; color: rgba(255, 255, 255, 1);">Hidden Gems in Morocco for Budget Travellers</h2>
+    <img src="js/morocco-hidden-gems--.jpg" alt="Hidden Gems in Morocco" style="width: 100%; height: auto; border-radius: 10px; margin-bottom: 15px;">
+    <p style="margin-bottom: 15px;">Explore Morocco beyond Marrakech! These hidden spots will make your trip unforgettable and affordable.</p>
+    <p style="margin-bottom: 30px;"><a href="Hidden_Gems_in_Morocco_for_Budget_Travellers.html" target="_blank" style="color: rgba(255, 255, 255, 1); text-decoration: underline;">Read More</a></p>
+
+    <h2 style="margin-bottom: 15px; color: rgba(255, 255, 255, 1);">The Best Beaches in the Caribbean and How to Get There</h2>
+    <img src="js/caribbean-beaches--.jpg" alt="Caribbean Beaches" style="width: 100%; height: auto; border-radius: 10px; margin-bottom: 15px;">
+    <p style="margin-bottom: 15px;">Crystal clear waters, white sand, and tropical vibes – find out how to visit the best Caribbean beaches affordably.</p>
+    <p style="margin-bottom: 30px;"><a href="Best_Beaches_in_the_Caribbean_How_to_Get_There.html" target="_blank" style="color: rgba(255, 255, 255, 1); text-decoration: underline;">Read More</a></p>
+
+    <h2 style="margin-bottom: 15px; color: rgba(255, 255, 255, 1);">Travel Hacks: Save Money on Flights and Hotels</h2>
+    <img src="js/travel-hacks--.jpg" alt="Travel Hacks" style="width: 100%; height: auto; border-radius: 10px; margin-bottom: 15px;">
+    <p style="margin-bottom: 15px;">Maximize your travel budget with these expert hacks for flights, hotels, and hidden discounts.</p>
+    <p style="margin-bottom: 30px;"><a href="Travel_Hacks_Save_Money_on_Flights_and_Hotels.html" target="_blank" style="color: rgba(255, 255, 255, 1); text-decoration: underline;">Read More</a></p>
         </div>
     `;
 
@@ -6590,7 +6655,7 @@ function toggleLightstheme2() {
       console.log("clouds added activated on night texture");
     }
     //markerMaterial.color.set(lightsmarkerMaterial);
-    lightsButton.textContent = "Remove";
+    lightsButton.textContent = "Undo";
   } else {
     // If the lights button is toggled off, revert to the current texture (day or night)
     if (currentTexture === "day") {
@@ -7542,7 +7607,7 @@ console.log(`Camera moving to: x=${x}, y=${y}, z=${z}`);
       .onComplete(() => {
         console.log(`Fetching and displaying detailed markers for region: ${region}`);
         // Fetch and display detailed markers for the selected region
-        //fetchMarkers(region);
+        fetchMarkers(region);
 
         // Hide the current region's marker
         if (genericMarkers[region]) {
@@ -7848,10 +7913,10 @@ document.getElementById('clearFiltersBtn').addEventListener('click', () => {
   const overlay2 = document.getElementById('overlayContainer2');
     overlay.style.display = "none"; // Clear previous posts
     overlay2.style.display = "none"; // Clear previous posts
-    overlay2.style.width = "0px";
-    overlay2.style.height = "0px";
-    overlay.style.width = "0px";
-    overlay.style.height = "0px";
+    //overlay2.style.width = "0px";
+    //overlay2.style.height = "0px";
+   //overlay.style.width = "0px";
+    //overlay.style.height = "0px";
   const theme2 = document.querySelector('.theme-switch2');
   const theme = document.querySelector('.theme-switch');
   document.addEventListener('DOMContentLoaded', () => {
@@ -7894,7 +7959,7 @@ document.querySelector('#searchBtn.airbnb-button22').addEventListener('click', a
     //document.getElementById('header').style.backgroundColor = 'white';  // Change header background to white
 	
     // Show the close button
-    document.getElementById('closeBtn').style.display = 'flex';
+    //document.getElementById('closeBtn').style.display = 'flex';
     let missingFields = []; // Initialize the array to track missing fields
 
     if (!from) missingFields.push('From location');
@@ -7911,11 +7976,11 @@ if (missingFields.length > 0) {
 
 // JavaScript to close the left-container and show the Three.js canvas
 // Function to handle the close button click
-document.getElementById('closeBtn').addEventListener('click', function () {
+//document.getElementById('closeBtn').addEventListener('click', function () {
     // Hide the close button and the left container
-    document.getElementById('closeBtn').style.display = 'none';
-    document.getElementById('overlayContainer2').style.display = 'none';
-});
+    //document.getElementById('closeBtn').style.display = 'none';
+    //document.getElementById('overlayContainer2').style.display = 'none';
+//});
 
 
     // Show spinner and transition to split screen mode
@@ -7937,7 +8002,7 @@ document.getElementById('closeBtn').addEventListener('click', function () {
     });*/
     overlay.style.display = 'grid';
     overlay.style.width= '46%';
-    overlay.style.height= '75%';
+    overlay.style.height= '77%';
     overlay.classList.add('show');
     
         overlay.innerHTML = `
@@ -8006,7 +8071,7 @@ const monthlyEndDate = new Date(today.getFullYear(), today.getMonth() + 3, 0); /
 // Format the dates to YYYY-MM-DD
 const monthlyStart = monthlyStartDate.toISOString().split('T')[0];  // First day of current month
 const monthlyEnd = monthlyEndDate.toISOString().split('T')[0];  // Last day of the month 3 months from now
-const url = `/scrape-flights?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}&departureDate=${encodeURIComponent(departureDate)}&returnDate=${encodeURIComponent(returnDate)}&passengers=${encodeURIComponent(passengers)}&cabinClass=${encodeURIComponent(cabinClass)}`;
+const url = `/scrape-expedia-flights?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}&departureDate=${encodeURIComponent(departureDate)}&returnDate=${encodeURIComponent(returnDate)}&passengers=${encodeURIComponent(passengers)}&cabinClass=${encodeURIComponent(cabinClass)}`;
 
 console.log("Requesting URL:", url);
 
@@ -8033,7 +8098,8 @@ console.log("Requesting URL:", url);
 
     // Update spinner text to indicate fetching data
     updateSpinnerText(`✈️ We’re comparing great flight deals for you... 🌟
-😌 Hang tight! Feel free to browse while we find your perfect trip. 🧳✨`);
+Thank you for your patience! 🙏🏽 Feel free to browse while we find your perfect trip. 🧳✨
+Powered by Expedia⚡️`);
 
     // Fetch Airbnb posts and display them
     await fetchFlightPosts(url);
@@ -8044,7 +8110,7 @@ console.log("Requesting URL:", url);
 	console.log('Generated searchUrl:checkout', returnDate);
 	console.log('Generated searchUrl:guests', passengers);
 	console.log('Generated searchUrl:cabinClass', cabinClass);
-	console.log('Fetching data from:', `https://0c1c-136-148-37-3.ngrok-free.app/scrape-flights?url=${encodeURIComponent(url)}`);
+	console.log('Fetching data from:', `https://0c1c-136-148-37-3.ngrok-free.app/scrape-expedia-flights?url=${encodeURIComponent(url)}`);
   hideSpinnerContainer();
   console.log("Formatted Departure Date:", departureDate);
 console.log("Formatted Return Date:", returnDate);
@@ -8055,9 +8121,10 @@ async function fetchFlightPosts(url) {
     try {
         // Update spinner text to indicate scraping started
         updateSpinnerText(`✈️ We’re comparing great flight deals for you... 🌟
-😌 Hang tight! Feel free to browse while we find your perfect trip. 🧳✨`);
+Thank you for your patience! 🙏🏽 Feel free to browse while we find your perfect trip. 🧳✨
+Powered by Expedia⚡️`);
 
-        const response = await fetch(`https://0c1c-136-148-37-3.ngrok-free.app/scrape-flights?url=${encodeURIComponent(url)}`, {
+        const response = await fetch(`https://0c1c-136-148-37-3.ngrok-free.app/scrape-expedia-flights?url=${encodeURIComponent(url)}`, {
           headers: {
         'ngrok-skip-browser-warning': 'true',
     },
@@ -8108,7 +8175,7 @@ function populateFlightOverlay(flights) {
         flightTime.classList.add('flight-time');
         flightTime.innerHTML = `
             <span class="flight-time-departure">${flight.departureTime || 'N/A'}</span>
-            <span class="flight-time-arrow">-----------------></span>
+            <span class="flight-time-arrow">--------------------------></span>
             <span class="flight-time-arrival">${flight.returnTime || 'N/A'}</span>
         `;
 
@@ -8131,18 +8198,18 @@ function populateFlightOverlay(flights) {
         // Flight details
         const details = document.createElement('div');
         details.classList.add('flight-details');
-        const layover = document.createElement('p');
-        layover.textContent = `Layover: ${flight.layoverTime || 'N/A'}`;
+        const airline = document.createElement('p');
+        airline.textContent = `${flight.airline || 'N/A'}`;
 
         const price = document.createElement('p');
-        price.textContent = `Price: $${flight.price || 'N/A'}`;
+        price.textContent = `Price: ${flight.price || 'N/A'}`;
 
-        details.appendChild(layover);
+        details.appendChild(airline);
         details.appendChild(price);
 
         // Book Button
         const bookButton = document.createElement('a');
-        bookButton.href = flight.link || '#';
+        //bookButton.href = flight.link || '#';
         bookButton.target = '_blank';
         bookButton.textContent = 'Book Now';
         bookButton.classList.add('book-button');
@@ -8187,7 +8254,7 @@ style.innerHTML = `
     color: #fff;
     font-family: system-ui;
     position: relative;
-margin-right: -320px;
+margin-right: -270px;
   }
 
   .flight-time-departure, .flight-time-arrival {
@@ -8339,6 +8406,8 @@ import {
 function populatelikedpostsOverlay(likedPosts) {
     const overlay = document.getElementById("overlayContainer");
     overlay.style.display = "grid";
+    overlay.style.width= '46%';
+    overlay.style.height= '75%';
     overlay.innerHTML = ""; // Clear previous posts
 
     likedPosts.forEach(post => {
@@ -8472,8 +8541,52 @@ document.querySelector('#searchBtn:not(:is(.airbnb-button22, .airbnb-button23))'
     //document.getElementById('header').style.backgroundColor = 'white';  // Change header background to white
 	
     // Show the close button
-    document.getElementById('closeBtn').style.display = 'flex';
-	
+    //document.getElementById('closeBtn').style.display = 'flex';
+    document.addEventListener('DOMContentLoaded', () => {
+  const menuButton = document.getElementById('menuButton'); // Select the menu button
+  const dropdownMenu = document.getElementById('dropdownMenu'); // Select the dropdown menu
+
+  // Check if the menu button exists
+  if (!menuButton) {
+    console.error("Menu button with ID 'menuButton' not found in the DOM.");
+    return; // Exit the script if the button doesn't exist
+  }
+
+  // Check if the dropdown menu exists
+  if (!dropdownMenu) {
+    console.error("Dropdown menu with ID 'dropdownMenu' not found in the DOM.");
+    return; // Exit the script if the menu doesn't exist
+  }
+
+  console.log("Menu button found:", menuButton);
+  console.log("Dropdown menu found:", dropdownMenu);
+
+  // Add click event listener to toggle the dropdown menu
+  menuButton.addEventListener('click', () => {
+    console.log("Menu button clicked.");
+    const currentDisplay = window.getComputedStyle(dropdownMenu).display;
+    dropdownMenu.style.display = currentDisplay === 'none' ? 'block' : 'none';
+    console.log("Dropdown menu toggled. New display:", dropdownMenu.style.display);
+  });
+
+  // Optional: Close the dropdown menu if clicking outside of it
+  document.addEventListener('click', (event) => {
+    if (event.target !== menuButton && !dropdownMenu.contains(event.target)) {
+      dropdownMenu.style.display = 'none'; // Hide the dropdown menu
+      console.log("Clicked outside. Dropdown menu closed.");
+    }
+  });
+  // Handle dropdown options
+document.getElementById('airbnbOption').addEventListener('click', () => {
+  dropdownMenu.style.display = 'none'; // Close the dropdown
+  fetchAirbnbPosts(searchUrl);// Load Airbnb posts
+});
+
+document.getElementById('expediaOption').addEventListener('click', () => {
+  dropdownMenu.style.display = 'none'; // Close the dropdown
+  //displayExpediaPosts(); // Load Expedia posts
+});
+});
     // Ensure all required fields are filled out
     if (!location || !checkin || !checkout || !guests) {
         alert('Please fill out all required fields.');
@@ -8481,14 +8594,13 @@ document.querySelector('#searchBtn:not(:is(.airbnb-button22, .airbnb-button23))'
     }
 // JavaScript to close the left-container and show the Three.js canvas
 // Function to handle the close button click
-document.getElementById('closeBtn').addEventListener('click', function () {
+//document.getElementById('closeBtn').addEventListener('click', function () {
     // Hide the close button and the left container
-    document.getElementById('closeBtn').style.display = 'none';
-    document.getElementById('overlayContainer').style.display = 'none';
-});
+    //document.getElementById('closeBtn').style.display = 'none';
+    //document.getElementById('overlayContainer').style.display = 'none';
+//});
 
-
-    // Show spinner and transition to split screen mode
+// Show spinner and transition to split screen mode
     /*const leftContainer = document.getElementById('left-container');*/
     const globeContainer = document.getElementById('globeContainer');
     const overlay = document.getElementById('overlayContainer');
@@ -8599,7 +8711,8 @@ const monthlyEnd = monthlyEndDate.toISOString().split('T')[0];  // Last day of t
 
     // Update spinner text to indicate fetching data
     updateSpinnerText(`We’re searching for the best hotel deals for you… 🙌 Sit back, relax, and browse while we find your perfect stay! 🏨✨
-    Thank you for your patience! 🙏🏽`);
+    Thank you for your patience! 🙏🏽
+    Powered by Expedia⚡️`);
 
     // Fetch Airbnb posts and display them
     await fetchAirbnbPosts(searchUrl);
@@ -8673,7 +8786,8 @@ async function fetchAirbnbPosts(searchUrl) {
     try {
         // Update spinner text to indicate scraping started
         updateSpinnerText(`We’re searching for the best hotel deals for you… 🙌 Sit back, relax, and browse while we find your perfect stay! 🏨✨
-    Thank you for your patience! 🙏🏽`);
+    Thank you for your patience! 🙏🏽
+    Powered by Expedia⚡️`);
 
         const response = await fetch(`https://0c1c-136-148-37-3.ngrok-free.app/scrape-airbnb?searchUrl=${encodeURIComponent(searchUrl)}`, {
           headers: {
@@ -9747,23 +9861,6 @@ const Locationsfixed = {
 "dublin": {"lat": 53.3498, "lng": -6.2603, "zoom": 1.3},
 "copenhagen": {"lat": 55.6761, "lng": 12.5683, "zoom": 1.3},
 "prague": {"lat": 50.0755, "lng": 14.4378, "zoom": 1.3},
-"jamaica": {"lat": 18.1096, "lng": -77.2975, "zoom": 1.3},
-"caribbean - all": { "lat": 18.1096, "lng": -77.2975, "zoom": 1.3 },
-    "caribbean - eastern": { "lat": 18.3400, "lng": -64.9300, "zoom": 1.3 },
-    "caribbean - southern": { "lat": 12.1696, "lng": -69.9906, "zoom": 1.3 },
-    "caribbean - western": { "lat": 20.4220, "lng": -86.9223, "zoom": 1.3 },
-    "hawaii": { "lat": 21.3069, "lng": -157.8583, "zoom": 1.3 },
-    "bermuda": { "lat": 32.3078, "lng": -64.7505, "zoom": 1.3 },
-    "alaska - all": { "lat": 64.2008, "lng": -149.4937, "zoom": 1.3 },
-    "alaska - gulf of alaska": { "lat": 59.5, "lng": -138.0, "zoom": 1.3 },
-    "alaska - inside passage": { "lat": 58.3, "lng": -134.4, "zoom": 1.3 },
-    "mexico": { "lat": 23.6345, "lng": -102.5528, "zoom": 1.3 },
-    "europe - all": { "lat": 54.5260, "lng": 15.2551, "zoom": 1.3 },
-    "europe - e. mediterranean": { "lat": 35.8991, "lng": 22.0006, "zoom": 1.3 },
-    "europe - mediterranean - all": { "lat": 41.3851, "lng": 2.1734, "zoom": 1.3 },
-    "europe - w. mediterranean": { "lat": 43.2965, "lng": 5.3698, "zoom": 1.3 },
-    "south pacific - tahiti": { "lat": -17.6509, "lng": -149.426, "zoom": 1.3 },
-    "world cruise": { "lat": 0.0, "lng": 0.0, "zoom": 1.3 },
 } /*
 const Locationsfixed = {
   "africa": {"lat": 8.5, "lng": 18.2, "zoom": 1.4},
@@ -10437,7 +10534,7 @@ addMarkupPoints(fromLatLng, toLatLng);
     console.log('markupPointGroup added to globe2:', addMarkupPoints);
     // Fetch and update markers based on the selected category
     const selectedCategory = document.getElementById('priceCategorySelect').value;
-    //fetchMarkers(location, selectedCategory);
+    fetchMarkers(location, selectedCategory);
 
     // Resize and update all markers
     // Resize and update all markers with animation
@@ -10445,7 +10542,7 @@ addMarkupPoints(fromLatLng, toLatLng);
 Object.keys(genericMarkers).forEach(region => {
     const markers = genericMarkers[region];
     if (markers) {
-        const originalMarkerSize = 1; // Assume original size
+        const originalMarkerSize = 0.5; // Assume original size
         const targetMarkerSize = 0.5; // Target size (smaller)
         const animationDuration = 500; // Animation duration in milliseconds
 
@@ -10513,7 +10610,7 @@ Object.keys(genericMarkers).forEach(region => {
 Object.keys(genericMarkers).forEach(region => {
     const markers = genericMarkers[region];
     if (markers) {
-        const originalMarkerSize = 1; // Assume original size was 0.5
+        const originalMarkerSize = 0.5; // Assume original size was 0.5
         const targetMarkerSize = 0.5; // Target size (smaller)
 
         for (let i = 0; i < markers.count; i++) {
@@ -10626,7 +10723,7 @@ addMarkupPoints(fromLatLng, toLatLng);
     console.log('markupPointGroup added to globe2:', addMarkupPoints);
     // Fetch and update markers based on the selected category
     const selectedCategory = document.getElementById('priceCategorySelect').value;
-    //fetchMarkers(location, selectedCategory);
+    fetchMarkers(location, selectedCategory);
 
     // Resize and update all markers
     // Resize and update all markers with animation
@@ -10634,7 +10731,7 @@ addMarkupPoints(fromLatLng, toLatLng);
 Object.keys(genericMarkers).forEach(region => {
     const markers = genericMarkers[region];
     if (markers) {
-        const originalMarkerSize = 1; // Assume original size
+        const originalMarkerSize = 0.5; // Assume original size
         const targetMarkerSize = 0.5; // Target size (smaller)
         const animationDuration = 500; // Animation duration in milliseconds
 
@@ -10702,7 +10799,7 @@ Object.keys(genericMarkers).forEach(region => {
 Object.keys(genericMarkers).forEach(region => {
     const markers = genericMarkers[region];
     if (markers) {
-        const originalMarkerSize = 1; // Assume original size was 0.5
+        const originalMarkerSize = 0.5; // Assume original size was 0.5
         const targetMarkerSize = 0.5; // Target size (smaller)
 
         for (let i = 0; i < markers.count; i++) {
@@ -11042,6 +11139,8 @@ async function fetchMarkers(location, category) {
     console.error("Failed to fetch markers:", error);
   }
 }
+let activeMarkersData2 = markers; // Default to markersData
+let activeLabel2 = null; // Keep track of open iframe
 // Function to add markers to the globe
 function addMarkersToGlobe(markers) {
   markers.forEach(marker => {
@@ -11050,7 +11149,7 @@ function addMarkersToGlobe(markers) {
 
     // Apply offsets for shifting down and left
     const latOffset = -10; // Adjust this value for downward movement
-    const lngOffset = -26.5; // Adjust this value for leftward movement
+    const lngOffset = -21; // Adjust this value for leftward movement
     lat += latOffset;
     lng += lngOffset;
 
@@ -11079,7 +11178,6 @@ function addMarkersToGlobe(markers) {
     setupMarkerInteraction2();
   });
 }
-let activeLabel2 = null; // Keep track of open iframe
 // Set up marker click event
 function setupMarkerInteraction2() {
   window.addEventListener('pointerdown', (event) => {
@@ -11270,7 +11368,7 @@ document.addEventListener('click', function (event) {
 Object.keys(genericMarkers).forEach(region => {
     const markers = genericMarkers[region];
     if (markers) {
-        const originalMarkerSize = 1; // Assume original size was 0.5
+        const originalMarkerSize = 0.5; // Assume original size was 0.5
         const targetMarkerSize = 0.5; // Target size (smaller)
 
         for (let i = 0; i < markers.count; i++) {
@@ -11338,8 +11436,8 @@ document.getElementById('regionSelectBtn').addEventListener('click', function ()
       let selectedRegion = this.value;
       const selectedCategory = document.getElementById('priceCategorySelect').value;
 	// Load appropriate markers for the selected region and category
-    //loadMarkersForRegionAndCategory(selectedRegion, selectedCategory);
-    //fetchMarkers(selectedRegion, selectedCategory);
+    loadMarkersForRegionAndCategory(selectedRegion, selectedCategory);
+    fetchMarkers(selectedRegion, selectedCategory);
       panToRegion(selectedRegion);
       console.log("Region button clicked. Resizing all markers.");
       const overlay = document.getElementById('overlayContainer');
@@ -11403,7 +11501,8 @@ async function fetchAirbnbPosts(searchUrl) {
     try {
         // Update spinner text to indicate scraping started
         updateSpinnerText(`We’re searching for the best hotel deals for you… 🙌 Sit back, relax, and browse while we find your perfect stay! 🏨✨
-    Thank you for your patience! 🙏🏽`);
+    Thank you for your patience!🙏🏽
+    Powered by Expedia⚡️`);
 
         const response = await fetch(`https://0c1c-136-148-37-3.ngrok-free.app/scrape-airbnb?searchUrl=${encodeURIComponent(searchUrl)}`, {
           headers: {
@@ -11720,7 +11819,7 @@ document.querySelectorAll('.post .view-link').forEach((item, index) => {
   Object.keys(genericMarkers).forEach(region => {
     const markers = genericMarkers[region];
     if (markers) {
-        const originalMarkerSize = 1; // Assume original size was 0.5
+        const originalMarkerSize = 0.5; // Assume original size was 0.5
         const targetMarkerSize = 0.5; // Target size (smaller)
 
         for (let i = 0; i < markers.count; i++) {
@@ -11825,7 +11924,7 @@ function addMarkersToGlobe(markers) {
 
     // Apply offsets for shifting down and left
     const latOffset = -10; // Adjust this value for downward movement
-    const lngOffset = -26.5; // Adjust this value for leftward movement
+    const lngOffset = -21; // Adjust this value for leftward movement
     lat += latOffset;
     lng += lngOffset;
 
@@ -12002,7 +12101,7 @@ function panToRegion(region) {
     case 'carribbean': 
       position = { x: 0.65, y: 2.0, z: 4.6 }; 
       //zoomLevel = 2.4;
-      zoomLevel = 1.5; 
+      zoomLevel = 3.260619061597975;
       break;
       
     case 'asia': 
