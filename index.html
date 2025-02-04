@@ -422,6 +422,29 @@ a, button, input, select, iframe {
       background-color: rgba(225, 225, 225, 0.35);
 	    border-color: #00aaff; /* Red border on hover for consistency with Airbnb style */
     }
+    #toggleButton4 {
+      position: absolute;
+      right: 15px;
+      top: 323px;
+      padding: 4px 7px;
+      font-size: 12px;
+      /*background-color: rgba(255, 255, 255, 0.2);*/
+      /*border: 1px solid rgba(255, 255, 255, 0.25);*/
+      /*border-radius: 8px;*/
+      color: rgba(255, 255, 255, 0.75);
+      z-index: 22011;
+      cursor: pointer;
+	    border: 0px solid #e0e0e0; /* Border similar to Airbnb */
+       background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 25px; /* Rounded corners for inputs */
+	    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border-radius: 0px 0px 0px 0px;
+      width: 125px;
+    }
+    #toggleButton4:hover {
+      background-color: rgba(225, 225, 225, 0.35);
+	    border-color: #00aaff; /* Red border on hover for consistency with Airbnb style */
+    }
 
     #addLightsbutton2:hover {
       background-color: rgba(225, 225, 225, 0.35);
@@ -1397,7 +1420,7 @@ iframe::-webkit-scrollbar {
 	  #newsButton {
     position: absolute;
       right: 15px;
-      top: 323px;
+      top: 347px;
       padding: 4.5px 7px;
       font-size: 12px;
       /*background-color: rgba(255, 255, 255, 0.2);*/
@@ -2191,7 +2214,7 @@ overflow: hidden;
     border-radius: 8px;
     padding: 10px;
     box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
-    top: 235px;
+    top: 260px;
     right: 144px;
     display: flex;
     flex-direction: column;
@@ -2204,7 +2227,21 @@ overflow: hidden;
     border-radius: 8px;
     padding: 10px;
     box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
-    top: 376px;
+    top:401px;
+    right: 144px;
+    display: flex;
+    flex-direction: column;
+    z-index: 22022;
+}
+
+.dropdown-menu3 {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.75);
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+    top: 260px;
     right: 144px;
     display: flex;
     flex-direction: column;
@@ -2212,7 +2249,7 @@ overflow: hidden;
 }
 
 #customBackgroundMenu select{
-    top: 59px;
+    top: 60px;
     right: 14px;
     background-position: right 10px;
     background-position-x: 96.5%;
@@ -2494,7 +2531,7 @@ margin-right: -53px;
   right: 15px;
   width: 80px;
   height: 40px;
-  top: 389px;
+  top: 412px;
   z-index: 22011;
 }
 .theme-switch2 {
@@ -3230,7 +3267,7 @@ crossorigin="anonymous"></script>
   z-index: 22011;
   left: 0px;
   right: 15px;
-  top: 348px;
+  top: 372px;
 }
 
 #minimizeCarouselBtn {
@@ -4151,6 +4188,14 @@ gl_FragColor = vec4(glowColor, intensity);
 <button id="addLightsbutton" style="display: block;">Jetsetter Theme💎</button>
 <button id="addLightsbutton3" style="display: block;">&nbsp;&nbsp;&nbsp;Pink Theme💖</button>
 <button id="addLightsbutton2">&nbsp;&nbsp;&nbsp;Atmosphere💨</button>
+<!-- Globe Style Toggle Button -->
+<button id="toggleButton4" class="theme-button2">&nbsp;&nbsp;&nbsp;Globe Theme🌍</button>
+<!-- Dropdown Menu for Background Selection -->
+<div id="backgroundDropdown2" class="dropdown-menu3 hidden">
+  <button id="glassButton" class="background-option">💎 Glass</button>
+  <button id="blueButton" class="background-option">🥶 Blue</button>
+  <button id="pinkButton" class="background-option">💖 Pink</button>
+</div>
 <button id="toggleChristmastheme" style="display:none">Christmas</button>
 
 <button id="newsButton">&nbsp;&nbsp;&nbsp;Travel Blog🏝️</button>
@@ -5013,11 +5058,10 @@ document.getElementById('addLightsbutton3').addEventListener('click', () => {
     if (pinkThemeActive) {
         pinkButton.textContent = "\u00A0\u00A0\u00A0Pink Theme✅";
         // Remove the main globe from the scene
-        globe.geometry.computeBoundingSphere();
-        globe.geometry.computeVertexNormals();
-        if (scene.getObjectByName('globe')) {
-                    scene.remove(globe);
-                }
+        // Remove the original `globe` object from the scene
+        /*if (scene.children.includes(globe)) {
+            scene.remove(globe);
+        }*/
         // Change all Airbnb logos
         Array.from(airbnbLogos).forEach(logo => {
             logo.src = "js/hotel-8.png";
@@ -5034,26 +5078,34 @@ document.getElementById('addLightsbutton3').addEventListener('click', () => {
         }
         // Zoom out the globe
         zoomOutGlobe();
-        const selectedHDRI = 'js/kloofendal_48d_partly_cloudy_puresky.jpg'
+        /*const selectedHDRI = 'js/kloofendal_48d_partly_cloudy_puresky.jpg'
 
         loader.load(selectedHDRI, function(texture) {
             const rt = new THREE.WebGLCubeRenderTarget(texture.image.height);
             rt.fromEquirectangularTexture(renderer, texture);
             scene.background = rt.texture;
-        });
+        });*/
+        /*if (!globe2.geometry.attributes.position || globe2.geometry.attributes.position.count === 0) {
+    console.warn("Globe2 geometry has invalid position attributes. Skipping material update.");
+    return;
+}*/
+        //addCountryOutlines(); // Add the country outlines
+
         // Create Transparent Reflective Material for globe2
-        globe2.material = new THREE.MeshPhysicalMaterial({
-            metalness: 1,         // Fully metallic for reflectivity
-            roughness: 0,         // Smooth to reflect environment
-            transmission: 0.9,   // High transparency for glass effect
-            opacity: 0.3,         // Semi-transparent
-            transparent: true,    // Enable transparency
-            envMap: scene.background, // Reflect the current HDRI sky
-            clearcoat: 1,         // Add glossy effect
-            clearcoatRoughness: 0 // Max smoothness
+        /*globe2.material = new THREE.MeshPhysicalMaterial({
+            color: new THREE.Color(0xffffff), // Neutral white to allow reflections
+            transparent: true,
+            opacity: 0.3, // Semi-transparent like glass
+            metalness: 1.0, // Fully metallic for high reflectivity
+            roughness: 0.1, // Slight roughness to give a realistic feel
+            envMapIntensity: 1.5, // Enhances reflections
+            clearcoat: 1.0, // Extra glossy surface
+            clearcoatRoughness: 0.1,
+            reflectivity: 1.0 // Maximum reflectivity
         });
+        scene.environment = scene.background;
         globe2.geometry.computeBoundingSphere();
-        globe2.geometry.computeVertexNormals();
+        globe2.geometry.computeVertexNormals();*/
         //scene.background = nightbackgroundTexture;
         //earthMaterial.uniforms.map.value = dayTexture;
 
@@ -5074,23 +5126,27 @@ document.getElementById('addLightsbutton3').addEventListener('click', () => {
         //scene.background = nightbackgroundTexture;
         //earthMaterial.uniforms.map.value = nightTexture;
         // Restore the original globe
-        scene.add(globe);
+        //scene.add(globe);
+        removeCountryOutlines(); // Remove the country outlines
         // Reset globe2 material to normal
-        globe2.material = new THREE.MeshPhongMaterial({
+        /*globe2.material = new THREE.MeshPhongMaterial({
             shininess: 15,
-            map: dayTexture, // Default to day texture
+            map: earthMaterial.uniforms.map.value, // Ensure it uses the correct texture
             specularMap: specularMap,
             bumpMap: bumpMap,
             bumpScale: 0.05,
             normalMap: normalMap,
             blending: THREE.AdditiveBlending,
-            specular: new THREE.Color('grey'),
+            specular: new THREE.Color('grey')
         });
+
         globe2.geometry.computeBoundingSphere();
         globe2.geometry.computeVertexNormals();
         globe.geometry.computeBoundingSphere();
-        globe.geometry.computeVertexNormals();
+        globe.geometry.computeVertexNormals();*/
         earthMaterial.uniforms.map.value = dayTexture;
+        //scene.environment = scene.background;
+
     }
 // Apply marker color logic
 if (pinkThemeActive) {
@@ -5871,6 +5927,9 @@ const sphere = new THREE.SphereGeometry(
   
 
   const renderer = new THREE.WebGLRenderer({ antialias: true });
+  //renderer.outputEncoding = THREE.sRGBEncoding; // Corrected version for newer Three.js
+//renderer.toneMapping = THREE.ACESFilmicToneMapping; // Optional for better lighting
+//renderer.toneMappingExposure = 1.0; // Adjust exposure if needed
   //renderer.setSize(innerWidth, innerHeight);
   //renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.setPixelRatio(window.devicePixelRatio);
@@ -6347,6 +6406,7 @@ const cloudMesh = new THREE.Mesh(cloudGeo, cloudMaterial);
 	  let daymarkerMaterial = new THREE.Color('#00BFFF');
     let lightsmarkerMaterial = new THREE.Color('#00eeff');
     let pinkthememarkerMaterial = new THREE.Color('#FF6CDA');
+    let GlassthememarkerMaterial = new THREE.Color('#FFFFFF');
 let nightmarkerMaterial = new THREE.Color('#00BFFF');
 	  //const daymarkerMaterial = new THREE.Color('#00FF00');
 //const nightmarkerMaterial = new THREE.Color('#FFFFFF');
@@ -7488,6 +7548,400 @@ document.addEventListener('DOMContentLoaded', () => {
 document.getElementById('toggleButton').addEventListener('click', toggleDayNight);
 let currentBackground = "night"; // Default background
 const loader = new THREE.TextureLoader();
+// Show/Hide Dropdown Menu
+let isCustomGlobeActive = false; // Track if a custom globe theme is applied
+
+// Show/Hide Dropdown Menu on Globe Theme Button Click
+document.getElementById('toggleButton4').addEventListener('click', () => {
+    if (isCustomGlobeActive) {
+        resetGlobeTheme(); // If a theme is active, reset it
+    } else {
+        document.getElementById('backgroundDropdown2').classList.toggle('hidden'); // Show menu
+    }
+});
+
+// Function to Remove Main Globe
+function removeMainGlobe() {
+    if (scene.children.includes(globe)) {
+        scene.remove(globe);
+    }
+}
+
+// Function to Apply Country Outlines with Fill
+function applyCountryOutlines(color) {
+    removeCountryOutlines(); // Clear any previous outlines
+    fetch('js/ne_110m_admin_0_countries.geojson')
+        .then(response => response.json())
+        .then(data => {
+            data.features.forEach(feature => {
+                if (feature.geometry.type === "MultiPolygon" || feature.geometry.type === "Polygon") {
+                    const coords = feature.geometry.coordinates;
+                    coords.forEach(polygon => {
+                        const points = [];
+                        polygon.forEach(coord => {
+                            const lon = coord[0];
+                            const lat = coord[1];
+                            const position = latLngToVector3(lat, lon, earthRadius + 0.01); // Offset for visibility
+                            points.push(position);
+                        });
+
+                        // **OUTLINE MATERIAL**
+                        const lineGeometry = new THREE.BufferGeometry().setFromPoints(points);
+                        const lineMaterial = new THREE.LineBasicMaterial({ color: color, linewidth: 2 });
+                        const lineMesh = new THREE.LineLoop(lineGeometry, lineMaterial);
+                        countryLinesGroup.add(lineMesh);
+
+                        // **FILLED MATERIAL**
+                        const shape = new THREE.Shape(points.map(p => new THREE.Vector2(p.x, p.y)));
+                        const extrudeSettings = { depth: 0.001, bevelEnabled: false };
+                        const fillGeometry = new THREE.ExtrudeGeometry(shape, extrudeSettings);
+                        const fillMaterial = new THREE.MeshBasicMaterial({
+                            color: color,
+                            transparent: true,
+                            opacity: 0.3,
+                            side: THREE.DoubleSide
+                        });
+                        const fillMesh = new THREE.Mesh(fillGeometry, fillMaterial);
+                        countryLinesGroup.add(fillMesh);
+                    });
+                }
+            });
+
+            globe2.add(countryLinesGroup);
+        })
+        .catch(error => console.error('Error loading GeoJSON:', error));
+}
+
+// Function to Update Globe2 Material
+function updateGlobeMaterial(color, metalness, roughness, transparency, envMapIntensity) {
+    if (!globe2.geometry.attributes.position || globe2.geometry.attributes.position.count === 0) {
+        console.warn("Globe2 geometry has invalid position attributes. Skipping material update.");
+        return;
+    }
+    var envMap = new THREE.TextureLoader().load('envmap.png');
+envMap.mapping = THREE.SphericalReflectionMapping;
+    globe2.material = new THREE.MeshPhysicalMaterial({
+        color: color,              // Set color based on theme
+        metalness: metalness,      // Controls reflectivity
+        roughness: roughness,      // Controls smoothness
+        transparent: transparency > 0, // Enable transparency if needed
+        opacity: transparency,     // Adjust transparency
+        envMap: envMap,  // Use HDRI for reflections
+        envMapIntensity: envMapIntensity, // Strength of reflections
+        clearcoat: 1,              // Glossy effect
+        clearcoatRoughness: 0       // Ensure max smoothness
+    });
+
+    globe2.geometry.computeBoundingSphere();
+    globe2.geometry.computeVertexNormals();
+}
+function showcustomglobethemePremiumPopup() {
+    if (document.getElementById("premiumPopup")) return; // Prevent duplicates
+
+    // Greyed-out overlay to prevent interactions
+    const overlay = document.createElement("div");
+    overlay.setAttribute("id", "premiumOverlay");
+    overlay.style.position = "fixed";
+    overlay.style.top = "0";
+    overlay.style.left = "0";
+    overlay.style.width = "100vw";
+    overlay.style.height = "100vh";
+    overlay.style.backgroundColor = "rgba(255, 255, 255, 0.10)"; // Dark overlay
+    overlay.style.zIndex = "22012";
+
+    // Premium Popup
+    const premiumPopup = document.createElement("div");
+    premiumPopup.setAttribute("id", "premiumPopup");
+    premiumPopup.style.position = "fixed";
+    premiumPopup.style.top = "50%";
+    premiumPopup.style.left = "50%";
+    premiumPopup.style.transform = "translate(-50%, -50%)";
+    premiumPopup.style.backgroundColor = "rgba(255, 255, 255, 0.15)";
+    premiumPopup.style.padding = "20px";
+    premiumPopup.style.borderRadius = "10px";
+    premiumPopup.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
+    premiumPopup.style.textAlign = "center";
+    premiumPopup.style.zIndex = "22013";
+    premiumPopup.style.width = "350px";
+
+    // Close Button
+    const closeButton = document.createElement("span");
+    closeButton.innerHTML = "&times;";
+    closeButton.style.position = "absolute";
+    closeButton.style.top = "5px";
+    closeButton.style.right = "10px";
+    closeButton.style.cursor = "pointer";
+    closeButton.style.fontSize = "20px";
+    closeButton.style.color = "#FFFFFF";
+
+    closeButton.addEventListener("click", () => {
+        revertToPreviousTheme(); // Revert theme if closed
+        scene.background = nightbackgroundTexture;
+    });
+
+    premiumPopup.appendChild(closeButton);
+
+    // Title
+    const title = document.createElement("h3");
+    title.innerText = "Upgrade to Premium";
+    title.style.color = "#FFFFFF";
+    premiumPopup.appendChild(title);
+
+    // Description
+    const description = document.createElement("p");
+    description.innerText = "Custom backdrops are a premium feature. Subscribe to access! ✨.";
+    description.style.fontSize = "14px";
+    description.style.color = "#FFFFFF";
+    premiumPopup.appendChild(description);
+
+    // Upgrade Button
+    const upgradeButton = document.createElement("button");
+    upgradeButton.innerText = "Upgrade Now";
+    upgradeButton.style.backgroundColor = "#00aaff";
+    upgradeButton.style.color = "white";
+    upgradeButton.style.border = "none";
+    upgradeButton.style.padding = "10px 20px";
+    upgradeButton.style.borderRadius = "5px";
+    upgradeButton.style.cursor = "pointer";
+    upgradeButton.style.marginTop = "10px";
+
+    upgradeButton.addEventListener("click", () => {
+        handlePremiumSignup(); // Handle upgrade
+    });
+
+    premiumPopup.appendChild(upgradeButton);
+
+    document.body.appendChild(overlay);
+    document.body.appendChild(premiumPopup);
+}
+function showcustompinkglobethemePremiumPopup() {
+  if (document.getElementById("pinkPremiumPopup")) return; // Prevent duplicates
+
+// Greyed-out overlay to prevent interactions
+const overlay = document.createElement("div");
+overlay.setAttribute("id", "pinkPremiumOverlay");
+overlay.style.position = "fixed";
+overlay.style.top = "0";
+overlay.style.left = "0";
+overlay.style.width = "100vw";
+overlay.style.height = "100vh";
+overlay.style.backgroundColor = "rgba(255, 182, 193, 0.2)"; // Light pink overlay
+overlay.style.zIndex = "22012";
+
+// Premium Popup
+const pinkPremiumPopup = document.createElement("div");
+pinkPremiumPopup.setAttribute("id", "pinkPremiumPopup");
+pinkPremiumPopup.style.position = "fixed";
+pinkPremiumPopup.style.top = "50%";
+pinkPremiumPopup.style.left = "50%";
+pinkPremiumPopup.style.transform = "translate(-50%, -50%)";
+pinkPremiumPopup.style.backgroundColor = "rgba(255, 192, 203, 0.2)"; // Light pink background
+pinkPremiumPopup.style.padding = "20px";
+pinkPremiumPopup.style.borderRadius = "10px";
+pinkPremiumPopup.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
+pinkPremiumPopup.style.textAlign = "center";
+pinkPremiumPopup.style.zIndex = "22013";
+pinkPremiumPopup.style.width = "350px";
+
+// Close Button
+const closeButton = document.createElement("span");
+closeButton.innerHTML = "&times;";
+closeButton.style.position = "absolute";
+closeButton.style.top = "5px";
+closeButton.style.right = "10px";
+closeButton.style.cursor = "pointer";
+closeButton.style.fontSize = "20px";
+closeButton.style.color = "#FFFFFF";
+
+
+    closeButton.addEventListener("click", () => {
+        revertToPreviousTheme(); // Revert theme if closed
+        scene.background = nightbackgroundTexture;
+    });
+
+    pinkPremiumPopup.appendChild(closeButton);
+
+    // Title
+    const title = document.createElement("h3");
+    title.innerText = "Upgrade to Premium";
+    title.style.color = "#FFFFFF";
+    pinkPremiumPopup.appendChild(title);
+
+    // Description
+    const description = document.createElement("p");
+    description.innerText = "Custom backdrops are a premium feature. Subscribe to access! ✨.";
+    description.style.fontSize = "14px";
+    description.style.color = "#FFFFFF";
+    pinkPremiumPopup.appendChild(description);
+
+    // Upgrade Button
+    const upgradeButton = document.createElement("button");
+    upgradeButton.innerText = "Upgrade Now";
+    upgradeButton.style.backgroundColor = "#00aaff";
+    upgradeButton.style.color = "white";
+    upgradeButton.style.border = "none";
+    upgradeButton.style.padding = "10px 20px";
+    upgradeButton.style.borderRadius = "5px";
+    upgradeButton.style.cursor = "pointer";
+    upgradeButton.style.marginTop = "10px";
+
+    upgradeButton.addEventListener("click", () => {
+        handlePremiumSignup(); // Handle upgrade
+    });
+
+    pinkPremiumPopup.appendChild(upgradeButton);
+
+    document.body.appendChild(overlay);
+    document.body.appendChild(pinkPremiumPopup);
+}
+function showcustomblueglobethemePremiumPopup() {
+  if (document.getElementById("bluePremiumPopup")) return; // Prevent duplicates
+
+  // Greyed-out overlay to prevent interactions
+  const overlay = document.createElement("div");
+  overlay.setAttribute("id", "bluePremiumOverlay");
+  overlay.style.position = "fixed";
+  overlay.style.top = "0";
+  overlay.style.left = "0";
+  overlay.style.width = "100vw";
+  overlay.style.height = "100vh";
+  overlay.style.backgroundColor = "rgba(173, 216, 230, 0.2)"; // Light blue overlay
+  overlay.style.zIndex = "22012";
+
+  // Premium Popup
+  const bluePremiumPopup = document.createElement("div");
+  bluePremiumPopup.setAttribute("id", "bluePremiumPopup");
+  bluePremiumPopup.style.position = "fixed";
+  bluePremiumPopup.style.top = "50%";
+  bluePremiumPopup.style.left = "50%";
+  bluePremiumPopup.style.transform = "translate(-50%, -50%)";
+  bluePremiumPopup.style.backgroundColor = "rgba(0, 128, 255, 0.2)"; // Light blue background
+  bluePremiumPopup.style.padding = "20px";
+  bluePremiumPopup.style.borderRadius = "10px";
+  bluePremiumPopup.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
+  bluePremiumPopup.style.textAlign = "center";
+  bluePremiumPopup.style.zIndex = "22013";
+  bluePremiumPopup.style.width = "350px";
+
+  // Close Button
+  const closeButton = document.createElement("span");
+  closeButton.innerHTML = "&times;";
+  closeButton.style.position = "absolute";
+  closeButton.style.top = "5px";
+  closeButton.style.right = "10px";
+  closeButton.style.cursor = "pointer";
+  closeButton.style.fontSize = "20px";
+  closeButton.style.color = "#FFFFFF";
+
+  closeButton.addEventListener("click", () => {
+    revertToPreviousTheme(); // Revert theme if closed
+    scene.background = nightbackgroundTexture;
+  });
+
+  bluePremiumPopup.appendChild(closeButton);
+
+  // Title
+  const title = document.createElement("h3");
+  title.innerText = "Upgrade to Premium";
+  title.style.color = "#FFFFFF";
+  bluePremiumPopup.appendChild(title);
+
+  // Description
+  const description = document.createElement("p");
+  description.innerText = "Custom backdrops are a premium feature. Subscribe to access! ✨.";
+  description.style.fontSize = "14px";
+  description.style.color = "#FFFFFF";
+  bluePremiumPopup.appendChild(description);
+
+  // Upgrade Button
+  const upgradeButton = document.createElement("button");
+  upgradeButton.innerText = "Upgrade Now";
+  upgradeButton.style.backgroundColor = "#0077ff"; // Deep blue button
+  upgradeButton.style.color = "white";
+  upgradeButton.style.border = "none";
+  upgradeButton.style.padding = "10px 20px";
+  upgradeButton.style.borderRadius = "5px";
+  upgradeButton.style.cursor = "pointer";
+  upgradeButton.style.marginTop = "10px";
+
+  upgradeButton.addEventListener("click", () => {
+    handlePremiumSignup(); // Handle upgrade
+  });
+
+  bluePremiumPopup.appendChild(upgradeButton);
+
+  document.body.appendChild(overlay);
+  document.body.appendChild(bluePremiumPopup);
+}
+
+// ** Apply Pink Theme - Glossy Pink Globe **
+document.getElementById('pinkButton').addEventListener('click', function () {
+  markerMaterial.color.set(pinkthememarkerMaterial);
+  if (!isUserPremium()) {
+    showcustompinkglobethemePremiumPopup(); // Show popup but still apply theme
+        }
+  // Zoom out the globe
+  zoomOutGlobe();
+    applyGlobeTheme(0xFF69B4, 0.9, 0.2, 1.0, 1.5, 0xFF69B4); // Glossy Pink with Pink Outlines
+});
+
+// ** Apply Glass Theme - Transparent Reflective Globe **
+document.getElementById('glassButton').addEventListener('click', function () {
+  markerMaterial.color.set(GlassthememarkerMaterial);
+  if (!isUserPremium()) {
+    showcustomglobethemePremiumPopup(); // Show popup but still apply theme
+        }
+  // Zoom out the globe
+  zoomOutGlobe();
+    applyGlobeTheme(0xFFFFFF, 1.0, 0.0, 0.3, 2.0, 0xFFFFFF); // Transparent Glass with White Outlines
+});
+
+// ** Apply Blue Theme - Glossy Blue Globe **
+document.getElementById('blueButton').addEventListener('click', function () {
+  if (!isUserPremium()) {
+    showcustomblueglobethemePremiumPopup(); // Show popup but still apply theme
+        }
+  // Zoom out the globe
+  zoomOutGlobe();
+    applyGlobeTheme(0x00BFFF, 0.9, 0.2, 1.0, 1.5, 0x00BFFF); // Glossy Blue with Blue Outlines
+});
+
+// Function to Apply a Globe Theme
+function applyGlobeTheme(globeColor, metalness, roughness, transparency, envMapIntensity, outlineColor) {
+    removeMainGlobe(); // Remove the original globe
+    updateGlobeMaterial(globeColor, metalness, roughness, transparency, envMapIntensity);
+    applyCountryOutlines(outlineColor); // Apply outlines with the chosen color
+    isCustomGlobeActive = true; // Mark theme as active
+    document.getElementById("toggleButton4").textContent = "\u00A0\u00A0\u00A0Globe Theme✅"; // Update button text
+    document.getElementById('backgroundDropdown2').classList.add('hidden'); // Hide dropdown after selection
+}
+
+// ** Reset Globe to Default when Clicking "Globe Theme ✅" Again **
+function resetGlobeTheme() {
+    scene.add(globe); // Bring back main globe
+    removeCountryOutlines(); // Clear all outlines
+    if (currentmarkerMaterial === "day") {
+            markerMaterial.color.set(daymarkerMaterial);
+        } else if (currentmarkerMaterial === "night") {
+            markerMaterial.color.set(nightmarkerMaterial);
+        }
+    globe2.material = new THREE.MeshPhongMaterial({ // Reset to default material
+        shininess: 15,
+        map: earthMaterial.uniforms.map.value,
+        specularMap: specularMap,
+        bumpMap: bumpMap,
+        bumpScale: 0.05,
+        normalMap: normalMap,
+        blending: THREE.AdditiveBlending,
+        specular: new THREE.Color('grey'),
+    });
+    earthMaterial.uniforms.map.value = dayTexture;
+    document.getElementById("toggleButton4").textContent = "\u00A0\u00A0\u00A0Globe Theme🌍"; // Reset button text
+    isCustomGlobeActive = false; // Mark theme as inactive
+}
+
+
+
 
 // Show/Hide Dropdown Menu
 document.getElementById('toggleButton3').addEventListener('click', () => {
@@ -7506,8 +7960,90 @@ document.getElementById('nightButton').addEventListener('click', function() {
 document.getElementById('customButton').addEventListener('click', function() {
     openCustomBackgroundMenu();
 });
+function showcustombackdropPremiumPopup() {
+    if (document.getElementById("premiumPopup")) return; // Prevent duplicates
+
+    // Greyed-out overlay to prevent interactions
+    const overlay = document.createElement("div");
+    overlay.setAttribute("id", "premiumOverlay");
+    overlay.style.position = "fixed";
+    overlay.style.top = "0";
+    overlay.style.left = "0";
+    overlay.style.width = "100vw";
+    overlay.style.height = "100vh";
+    overlay.style.backgroundColor = "rgba(255, 255, 255, 0.10)"; // Dark overlay
+    overlay.style.zIndex = "22012";
+
+    // Premium Popup
+    const premiumPopup = document.createElement("div");
+    premiumPopup.setAttribute("id", "premiumPopup");
+    premiumPopup.style.position = "fixed";
+    premiumPopup.style.top = "50%";
+    premiumPopup.style.left = "50%";
+    premiumPopup.style.transform = "translate(-50%, -50%)";
+    premiumPopup.style.backgroundColor = "rgba(255, 255, 255, 0.15)";
+    premiumPopup.style.padding = "20px";
+    premiumPopup.style.borderRadius = "10px";
+    premiumPopup.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
+    premiumPopup.style.textAlign = "center";
+    premiumPopup.style.zIndex = "22013";
+    premiumPopup.style.width = "350px";
+
+    // Close Button
+    const closeButton = document.createElement("span");
+    closeButton.innerHTML = "&times;";
+    closeButton.style.position = "absolute";
+    closeButton.style.top = "5px";
+    closeButton.style.right = "10px";
+    closeButton.style.cursor = "pointer";
+    closeButton.style.fontSize = "20px";
+    closeButton.style.color = "#FFFFFF";
+
+    closeButton.addEventListener("click", () => {
+        revertToPreviousTheme(); // Revert theme if closed
+        scene.background = nightbackgroundTexture;
+    });
+
+    premiumPopup.appendChild(closeButton);
+
+    // Title
+    const title = document.createElement("h3");
+    title.innerText = "Upgrade to Premium";
+    title.style.color = "#FFFFFF";
+    premiumPopup.appendChild(title);
+
+    // Description
+    const description = document.createElement("p");
+    description.innerText = "Custom backdrops are a premium feature. Subscribe to access! ✨.";
+    description.style.fontSize = "14px";
+    description.style.color = "#FFFFFF";
+    premiumPopup.appendChild(description);
+
+    // Upgrade Button
+    const upgradeButton = document.createElement("button");
+    upgradeButton.innerText = "Upgrade Now";
+    upgradeButton.style.backgroundColor = "#00aaff";
+    upgradeButton.style.color = "white";
+    upgradeButton.style.border = "none";
+    upgradeButton.style.padding = "10px 20px";
+    upgradeButton.style.borderRadius = "5px";
+    upgradeButton.style.cursor = "pointer";
+    upgradeButton.style.marginTop = "10px";
+
+    upgradeButton.addEventListener("click", () => {
+        handlePremiumSignup(); // Handle upgrade
+    });
+
+    premiumPopup.appendChild(upgradeButton);
+
+    document.body.appendChild(overlay);
+    document.body.appendChild(premiumPopup);
+}
 document.getElementById('applycustomHDRI').addEventListener('click', function() {
   applyCustomBackground();
+  if (!isUserPremium()) {
+    showcustombackdropPremiumPopup(); // Show popup but still apply theme
+        }
   // Zoom out the globe
   zoomOutGlobe();
 });
@@ -8030,46 +8566,62 @@ globe2 = new THREE.Mesh(geometry, earthMaterial);
   //globe2 = new THREE.Mesh(geometry, material2);
   scene.add(globe2);
 // Load GeoJSON and add country outlines to the transparent globe
-fetch('js/ne_110m_admin_0_countries.geojson')
-    .then(response => response.json())
-    .then(data => {
-        const countryLines = new THREE.Group();
+let countryLinesGroup = new THREE.Group(); // Store country outlines globally
 
-        data.features.forEach(feature => {
-            if (feature.geometry.type === "MultiPolygon" || feature.geometry.type === "Polygon") {
-                const coords = feature.geometry.coordinates;
+function addCountryOutlines() {
+    if (countryLinesGroup.children.length > 0) return; // Prevent duplicate outlines
 
-                coords.forEach(polygon => {
-                    const points = [];
-                    polygon.forEach(coord => {
-                        const lon = coord[0];
-                        const lat = coord[1];
+    fetch('js/ne_110m_admin_0_countries.geojson')
+        .then(response => response.json())
+        .then(data => {
+            data.features.forEach(feature => {
+                if (feature.geometry.type === "MultiPolygon" || feature.geometry.type === "Polygon") {
+                    const coords = feature.geometry.coordinates;
 
-                        // Convert lat/lon to 3D space (spherical coordinates)
-                        const radius = 5.01; // Slightly above globe surface to avoid z-fighting
-                        const phi = (90 - lat) * (Math.PI / 180);
-                        const theta = (lon + 180) * (Math.PI / 180);
+                    coords.forEach(polygon => {
+                        const points = [];
+                        polygon.forEach(coord => {
+                            const lon = coord[0];
+                            const lat = coord[1];
+                            const position = latLngToVector3(lat, lon, earthRadius + 0.01); // Offset for visibility
+                            points.push(position);
+                        });
 
-                        const x = radius * Math.sin(phi) * Math.cos(theta);
-                        const y = radius * Math.cos(phi);
-                        const z = radius * Math.sin(phi) * Math.sin(theta);
+                        // **OUTLINE MATERIAL**
+                        const lineGeometry = new THREE.BufferGeometry().setFromPoints(points);
+                        const lineMaterial = new THREE.LineBasicMaterial({ color: 0xff69b4, linewidth: 2 }); // Pink outline
+                        const lineMesh = new THREE.LineLoop(lineGeometry, lineMaterial);
+                        countryLinesGroup.add(lineMesh);
 
-                        points.push(new THREE.Vector3(x, y, z));
+                        // **FILLED MATERIAL**
+                        const shape = new THREE.Shape(points.map(p => new THREE.Vector2(p.x, p.y)));
+                        const extrudeSettings = { depth: 0.001, bevelEnabled: false };
+                        const fillGeometry = new THREE.ExtrudeGeometry(shape, extrudeSettings);
+                        const fillMaterial = new THREE.MeshBasicMaterial({
+                            color: 0xff69b4,
+                            transparent: true,
+                            opacity: 0.3,
+                            side: THREE.DoubleSide
+                        });
+                        const fillMesh = new THREE.Mesh(fillGeometry, fillMaterial);
+                        countryLinesGroup.add(fillMesh);
                     });
+                }
+            });
 
-                    // Create a geometry for the country outline
-                    const geometry = new THREE.BufferGeometry().setFromPoints(points);
-                    const material = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.8 });
-                    const line = new THREE.LineLoop(geometry, material);
+            globe2.add(countryLinesGroup);
+        })
+        .catch(error => console.error('Error loading GeoJSON:', error));
+}
 
-                    countryLines.add(line);
-                });
-            }
-        });
+// Function to remove the country outlines when the pink theme is off
+function removeCountryOutlines() {
+    if (countryLinesGroup) {
+        globe2.remove(countryLinesGroup);
+        countryLinesGroup.children = []; // Clear the group
+    }
+}
 
-        scene.add(countryLines);
-    })
-    .catch(error => console.error("Error loading GeoJSON:", error));
 
   createEarthGlow();
   createEarthAperture();
