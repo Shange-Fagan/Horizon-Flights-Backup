@@ -1582,12 +1582,18 @@ select[id^="airbnbSelector-"] {
     position: absolute;
     top: 350px !important;
     right: 30px !important;
+    background-position: right 9.5px;
+    background-position-x: 95.5%;
+background-size: 14px;
 }
 select[id^="priceCategorySelect-"] {
     display: none;
     position: absolute;
     top: 380px !important;
     right: 30px !important;
+    background-position: right 9.5px;
+    background-position-x: 95.5%;
+    background-size: 14px;
 }
 
 
@@ -2619,14 +2625,23 @@ left: -8px !important;
     }
 }
 
-/* Apply Safari-specific padding using a media query */
-@media not all and (min-resolution:.001dpcm) { 
-    @supports (-webkit-appearance: none) { 
-        .like-button {
-            padding: 17px 20px !important;
-            padding-bottom: 17px !important;
-        }
+/* Chrome-only CSS */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @supports not (stroke-color: transparent) {
+    .like-button {
+      padding: 16.5px 20px !important;
+      padding-bottom: 15.5px !important;
     }
+  }
+}
+/* Safari-only CSS */
+@media not all and (min-resolution: 0.001dpcm) {
+  @supports (-webkit-appearance: none) and (stroke-color: transparent) {
+    .like-button {
+      padding: 17px 20px !important;
+      padding-bottom: 17px !important;
+    }
+  }
 }
 
 
@@ -3502,6 +3517,15 @@ margin-bottom: 1px;
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5689710336620898"
      crossorigin="anonymous"></script>
 </head>
+	<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-16857735506"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-16857735506');
+</script>
 <body>
   <div id="globeViz" style="display:none"></div>
   <div class="carousel-header">
@@ -3786,11 +3810,6 @@ margin-bottom: 1px;
     <img src="js/login--2.png" alt="Button Click" class="glove-hand">
     <div class="pulsating-dot" style="top: 70%; left: 60%;"></div>
     <p class="instruction-text">Lastly, Phew😮‍💨, Login to view saved and liked posts!</p>
-  </div>
-  <div class="instruction-step hidden" id="themeInstruction">
-    <img src="js/resort-2.png" alt="Button Click" class="glove-hand"><img src="js/luxury.png" alt="Button Click" class="glove-hand">
-    <div class="pulsating-dot" style="top: 70%; left: 60%;"></div>
-    <p class="instruction-text">With Us, All you have to ask is where to next! start exploring and have fun!!</p>
   </div>
 <div class="instruction-step hidden" id="themeInstruction">
 <button id="gotItBtn" style="top: 50%;left: 35%;" class="got-it-button hidden">Got it!</button>
@@ -4215,7 +4234,7 @@ gl_FragColor = vec4(glowColor, intensity);
 	
 <button id="toggleButton">&nbsp;&nbsp;&nbsp;Day Theme🌥️</button>
 <!-- Background Toggle Button -->
-<button id="toggleButton3" class="theme-button">&nbsp;&nbsp;&nbsp;Background🎨</button>
+<button id="toggleButton3" class="theme-button">&nbsp;&nbsp;&nbsp;Background🏙️</button>
 <!-- Dropdown Menu for Background Selection -->
 <div id="backgroundDropdown" class="dropdown-menu hidden">
     <button id="dayButton" class="background-option">🌞 Day</button>
@@ -6155,28 +6174,28 @@ let isDay = true; // Track whether it's currently day or night
     newsOverlay.innerHTML = `
         <div class="blog-container" style="padding: 20px; background: rgba(255, 255, 255, 0.15); border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); max-width: 800px; margin: auto; color: rgba(255, 255, 255, 1); overflow-y: auto; position: relative; top: 65px; max-height: 74%;">
             <h1 style="margin-bottom: 20px; color: rgba(255, 255, 255, 1);">Top 10 Hotels in São Paulo for Under £100</h1>
-            <p style="margin-bottom: 20px;">Looking for a luxurious yet affordable stay in São Paulo? Here’s our curated list of budget-friendly hotels where comfort meets affordability. Perfect for solo travelers, couples, or families!</p>
+            <p style="margin-bottom: 20px;">Looking for a luxurious yet affordable stay in São Paulo? Here’s our curated list of budget-friendly hotels where comfort meets affordability. Perfect for solo travelers or couples!</p>
             
             <h2 style="margin-bottom: 15px; color: rgba(255, 255, 255, 1);">1. Hotel Fasano São Paulo</h2>
             <img src="js/hotel-fasano-rio-de-janeiro.jpg" alt="Hotel Fasano São Paulo" style="width: 100%; height: auto; border-radius: 10px; margin-bottom: 15px;">
             <p style="margin-bottom: 15px;">Stay in the heart of São Paulo with rooms starting at just £95. Enjoy a rooftop pool, world-class dining, and exceptional hospitality.</p>
-            <p style="margin-bottom: 30px;"><a href="https://www.booking.com/hotel-fasano" target="_blank" style="color: rgba(255, 255, 255, 1); text-decoration: underline;">Book now on Booking.com</a></p>
+            <p style="margin-bottom: 30px;"><a href="https://www.anrdoezrs.net/click-101312981-13882988?url=https%3A%2F%2Fwww.expedia.co.uk%2FSao-Paulo-Hotels-Hotel-Fasano-Sao-Paulo.h967131.Hotel-Information%3Frecommendations-overlay%3Drecommendations-overlay" target="_blank" style="color: rgba(255, 255, 255, 1); text-decoration: underline;">Book now on Expedia</a></p>
 
             <h2 style="margin-bottom: 15px; color: rgba(255, 255, 255, 1);">2. Selina Madalena São Paulo</h2>
             <img src="js/selina-coworking-madalena-building.jpg" alt="Selina Madalena São Paulo" style="width: 100%; height: auto; border-radius: 10px; margin-bottom: 15px;">
             <p style="margin-bottom: 15px;">Trendy, vibrant, and budget-friendly. Rooms start at £60, offering coworking spaces and a buzzing social scene.</p>
-            <p style="margin-bottom: 30px;"><a href="https://www.hostelworld.com/selina-madalena" target="_blank" style="color: rgba(255, 255, 255, 1); text-decoration: underline;">Check prices on Hostelworld</a></p>
+            <p style="margin-bottom: 30px;"><a href="https://www.anrdoezrs.net/click-101312981-13882988?url=https%3A%2F%2Fwww.expedia.co.uk%2FSao-Paulo-Hotels-Selina-Madalena-Sao-Paulo.h36072334.Hotel-Information" target="_blank" style="color: rgba(255, 255, 255, 1); text-decoration: underline;">Check prices on Expedia</a></p>
 
             <h3 style="margin-bottom: 15px; color: rgba(255, 255, 255, 1);">Other Noteworthy Hotels:</h3>
             <ul style="margin-left: 20px; margin-bottom: 30px;">
                 <li style="margin-bottom: 10px; color: rgba(255, 255, 255, 1);"><strong>Renaissance São Paulo Hotel</strong> – £90/night. 
-                    <a href="https://www.marriott.com/renaissance-sp" target="_blank" style="color: rgba(255, 255, 255, 1); text-decoration: underline;">Book on Marriott</a>
+                    <a href="https://www.kqzyfj.com/click-101312981-13882988?url=https%3A%2F%2Fwww.expedia.co.uk%2FSao-Paulo-Hotels-Renaissance-Sao-Paulo-Hotel.h44067.Hotel-Information" target="_blank" style="color: rgba(255, 255, 255, 1); text-decoration: underline;">Book on Expedia</a>
                 </li>
                 <li style="margin-bottom: 10px; color: rgba(255, 255, 255, 1);"><strong>Mercure São Paulo Jardins</strong> – £75/night. 
-                    <a href="https://www.booking.com/mercure-jardins" target="_blank" style="color: rgba(255, 255, 255, 1); text-decoration: underline;">Reserve on Booking.com</a>
+                    <a href="https://www.anrdoezrs.net/click-101312981-13882988?url=https%3A%2F%2Fwww.expedia.co.uk%2FSao-Paulo-Hotels-Mercure-Sao-Paulo-Jardins.h688121.Hotel-Information" target="_blank" style="color: rgba(255, 255, 255, 1); text-decoration: underline;">Reserve on Expedia</a>
                 </li>
                 <li style="margin-bottom: 10px; color: rgba(255, 255, 255, 1);"><strong>Radisson Paulista</strong> – £80/night. 
-                    <a href="https://www.radisson.com/paulista" target="_blank" style="color: rgba(255, 255, 255, 1); text-decoration: underline;">View deals on Radisson</a>
+                    <a href="https://www.dpbolvw.net/click-101312981-13882988?url=https%3A%2F%2Fwww.expedia.co.uk%2FSao-Paulo-Hotels-Radisson-Hotel-Paulista-Sao-Paulo.h433447.Hotel-Information" target="_blank" style="color: rgba(255, 255, 255, 1); text-decoration: underline;">View deals on Expedia</a>
                 </li>
             </ul>
 
@@ -8783,6 +8802,114 @@ const markersData = [
   { id: 3, region: 'america', position: [5.1, 0.9, -0.15], iframeSrc: "https://rss.app/embed/v1/list/H70mWzoc5k4uZlkm" },
   { id: 4, region: 'south america', position: [5.1, 1.6, 0.4], iframeSrc: "https://rss.app/embed/v1/list/SHpWQD9ysobliT9H" },
   { id: 5, region: 'middle east', position: [5.1, 1, 2.3],iframeSrc: "https://rss.app/embed/v1/list/JCYAnBzooyfhbDvO" },
+  { id: 6, region: 'asia', position: [5.1, 0.9, 3], iframeSrc: "https://rss.app/embed/v1/list/8oJAFwryVndrg9qh" },
+  { id: 7, region: 'japan', position: [5.1, 0.9, 4], iframeSrc: "https://rss.app/embed/v1/list/8E3wZRO4bLOzNAB2" },
+  { id: 8, region: 'carribbean', position: [5.1, 1.25, 0.15], iframeSrc: "https://rss.app/embed/v1/list/fCgGTq3kAHoZyiC4" },
+  { id: 9, region: 'uk', position: [5.1, 0.64, 1.55], iframeSrc: "https://rss.app/embed/v1/list/VD7IhqKGV9q59zWu" },
+  { id: 10, region: 'new york', position: [5.1, 0.9, 0.25], iframeSrc: "https://rss.app/embed/v1/list/xOKzp29XiJQsDy8s" },
+  { id: 11, region: 'florida', position: [5.1, 1.077, 0.14], iframeSrc: "https://rss.app/embed/v1/list/1XOUd8JEO4xYARbx" },
+  { id: 12, region: 'mexico', position: [5.1, 1.2, -0.2], iframeSrc: "https://rss.app/embed/v1/list/WsTF4RWpAxs7cW7E" },
+  { id: 13, region: 'brazil', position: [5.1, 1.8, 0.7], iframeSrc: "https://rss.app/embed/v1/list/MQopXDcvCJgbVrJq" },
+  { id: 14, region: 'argentina', position: [5.1, 2.2, 0.5], iframeSrc: "https://rss.app/embed/v1/list/N1io1zQOpLx05GCT" },
+  { id: 15, region: 'nigeria', position: [5.1, 1.435, 1.7], iframeSrc: "https://rss.app/embed/v1/list/sXONZKLJdsFOmQ6U" },
+  { id: 16, region: 'morocco', position: [5.1, 1.0, 1.65], iframeSrc: "https://rss.app/embed/v1/list/7PkBkOEXUzZ3wgTX" },
+  { id: 17, region: 'ghana', position: [5.1, 1.42, 1.57], iframeSrc: "https://rss.app/embed/v1/list/cyaVVDgVwKRbGGk3" },
+  { id: 18, region: 'ethiopia', position: [5.1, 1.435, 2.25], iframeSrc: "https://rss.app/embed/v1/list/qqUcYitAMkfTl9gc" },
+  { id: 19, region: 'somali', position: [5.1, 1.5, 2.35], iframeSrc: "https://rss.app/embed/v1/list/eYJEDl0n6NQ0vbXQ" },
+  { id: 20, region: 'egypt', position: [5.1, 1.1, 2.025], iframeSrc: "https://rss.app/embed/v1/list/1zENc8xlwLAD9N8j" },
+  { id: 21, region: 'kenya', position: [5.1, 1.59, 2.2], iframeSrc: "https://rss.app/embed/v1/list/BheyyzLtzcza5gF7" },
+  { id: 22, region: 'south africa', position: [5.1, 2.0, 2.05], iframeSrc: "https://rss.app/embed/v1/list/aGWKlWNxkC26vC5c" },
+  { id: 23, class:"iframe-saudi",region: 'saudi arabia', position: [5.1, 1.15, 2.35],iframeSrc: "https://rss.app/embed/v1/list/Lf7XMimoFVElTq81" },
+];
+	  const markersData2 = [
+  // Each marker has [radius, phi, theta] format for spherical positioning
+  { id: 1, region: 'africa', position: [5.1, 1.2, 1.4], iframeSrc: "https://rss.app/embed/v1/list/tEcxpRFk6tQBnowf" },
+  { id: 2, region: 'europe', position: [5.1, 0.7, 1.8], iframeSrc: "https://rss.app/embed/v1/list/2pc8WvR9T14l1dGm" },
+  // Add other markers here...
+  { id: 3, region: 'america', position: [5.1, 0.9, -0.15], iframeSrc: "https://rss.app/embed/v1/list/VoezHj6DWeuUtEum" },
+  { id: 4, region: 'south america', position: [5.1, 1.6, 0.4], iframeSrc: "https://rss.app/embed/v1/list/bYI1KyPEhdZLxw5U" },
+  { id: 5, region: 'middle east', position: [5.1, 1, 2.3],iframeSrc: "https://rss.app/embed/v1/list/NuyevQ0im9mMdHnt" },
+  { id: 6, region: 'asia', position: [5.1, 0.9, 3], iframeSrc: "https://rss.app/embed/v1/list/47lxLTf5hoeWszWx" },
+  { id: 7, region: 'japan', position: [5.1, 0.9, 4], iframeSrc: "https://rss.app/embed/v1/list/t6XdCyA63fL2mNA9" },
+  { id: 8, region: 'carribbean', position: [5.1, 1.25, 0.15], iframeSrc: "https://rss.app/embed/v1/list/ZYO6z3mtdWZoCEAK" },
+  { id: 9, region: 'uk', position: [5.1, 0.64, 1.55], iframeSrc: "https://rss.app/embed/v1/list/oFKRbVMZVyy9yabd" },
+  { id: 10, region: 'new york', position: [5.1, 0.9, 0.25], iframeSrc: "https://rss.app/embed/v1/list/KT4RkY6Lq6gm8CVH" },
+  { id: 11, region: 'florida', position: [5.1, 1.077, 0.14], iframeSrc: "https://rss.app/embed/v1/list/qdJ72utsPUrERdRQ" },
+  { id: 12, region: 'mexico', position: [5.1, 1.2, -0.2], iframeSrc: "https://rss.app/embed/v1/list/4l1rFMaFNRIrzCDv" },
+  { id: 13, region: 'brazil', position: [5.1, 1.8, 0.7], iframeSrc: "https://rss.app/embed/v1/list/Y4RUrx9b3DbMnHhF" },
+  { id: 14, region: 'argentina', position: [5.1, 2.2, 0.5], iframeSrc: "https://rss.app/embed/v1/list/WUoa8mDiXpQ4f8GP" },
+  { id: 15, region: 'nigeria', position: [5.1, 1.435, 1.7], iframeSrc: "https://rss.app/embed/v1/list/G7BYwz8k35U8OfHV" },
+  { id: 16, region: 'morocco', position: [5.1, 1.0, 1.65], iframeSrc: "https://rss.app/embed/v1/list/MowLEtjv8C26VBXN" },
+  { id: 17, region: 'ghana', position: [5.1, 1.42, 1.57], iframeSrc: "https://rss.app/embed/v1/list/zFssA6UTMXte2SrV" },
+  { id: 18, region: 'ethiopia', position: [5.1, 1.435, 2.25], iframeSrc: "https://rss.app/embed/v1/list/Ir9R6tFohibfEM3n" },
+  { id: 19, region: 'somali', position: [5.1, 1.5, 2.35], iframeSrc: "https://rss.app/embed/v1/list/R3xELDZSJJX6HCCb" },
+  { id: 20, region: 'egypt', position: [5.1, 1.1, 2.025], iframeSrc: "https://rss.app/embed/v1/list/K2mVG2PU3ECccShR" },
+  { id: 21, region: 'kenya', position: [5.1, 1.59, 2.2], iframeSrc: "https://rss.app/embed/v1/list/2yy0uvIzgVTyoKst" },
+  { id: 22, region: 'south africa', position: [5.1, 2.0, 2.05], iframeSrc: "https://rss.app/embed/v1/list/E6zHfUoCJ9JBjf75" },
+  { id: 23, class:"iframe-saudi",region: 'saudi arabia', position: [5.1, 1.15, 2.35],iframeSrc: "https://rss.app/embed/v1/list/H03Nz6aXrdjSoToZ" },
+];
+	  const markersData3 = [
+  // Each marker has [radius, phi, theta] format for spherical positioning
+  { id: 1, region: 'africa', position: [5.1, 1.2, 1.4], iframeSrc: "https://rss.app/embed/v1/list/Vn6tfwNHnHt66XPa" },
+  { id: 2, region: 'europe', position: [5.1, 0.7, 1.8], iframeSrc: "https://rss.app/embed/v1/list/r3vqGd3V2XV9pzSg" },
+  // Add other markers here...
+  { id: 3, region: 'america', position: [5.1, 0.9, -0.15], iframeSrc: "https://rss.app/embed/v1/list/1YUGM4aCuW1xPBg8" },
+  { id: 4, region: 'south america', position: [5.1, 1.6, 0.4], iframeSrc: "https://rss.app/embed/v1/list/nhLQY15UsjuCCYBN" },
+  { id: 5, region: 'middle east', position: [5.1, 1, 2.3],iframeSrc: "https://rss.app/embed/v1/list/VzQN5G7044HuJY6G" },
+  { id: 6, region: 'asia', position: [5.1, 0.9, 3], iframeSrc: "https://rss.app/embed/v1/list/lh4Y6XEAQNTsjysH" },
+  { id: 7, region: 'japan', position: [5.1, 0.9, 4], iframeSrc: "https://rss.app/embed/v1/list/fWK5IgHv7IF7Vsss" },
+  { id: 8, region: 'carribbean', position: [5.1, 1.25, 0.15], iframeSrc: "https://rss.app/embed/v1/list/xOd4KyZRLSHEAN1I" },
+  { id: 9, region: 'uk', position: [5.1, 0.64, 1.55], iframeSrc: "https://rss.app/embed/v1/list/BQyJVk9A1CWxBV29" },
+  { id: 10, region: 'new york', position: [5.1, 0.9, 0.25], iframeSrc: "https://rss.app/embed/v1/list/mJkZXk9RLjLdkUDG" },
+  { id: 11, region: 'florida', position: [5.1, 1.077, 0.14], iframeSrc: "https://rss.app/embed/v1/list/M4XS1vj5Mc4xMSVf" },
+  { id: 12, region: 'mexico', position: [5.1, 1.2, -0.2], iframeSrc: "https://rss.app/embed/v1/list/uI734I6qvpuGjLPh" },
+  { id: 13, region: 'brazil', position: [5.1, 1.8, 0.7], iframeSrc: "https://rss.app/embed/v1/list/f1NaiqLL95NMHUhJ" },
+  { id: 14, region: 'argentina', position: [5.1, 2.2, 0.5], iframeSrc: "https://rss.app/embed/v1/list/dhbw787UPe7MAxS5" },
+  { id: 15, region: 'nigeria', position: [5.1, 1.435, 1.7], iframeSrc: "https://rss.app/embed/v1/list/7BdbHkWKbfxBbneg" },
+  { id: 16, region: 'morocco', position: [5.1, 1.0, 1.65], iframeSrc: "https://rss.app/embed/v1/list/gn5N6RnLXjHXUxlb" },
+  { id: 17, region: 'ghana', position: [5.1, 1.42, 1.57], iframeSrc: "https://rss.app/embed/v1/list/r0pazDgpxj72DxuC" },
+  { id: 18, region: 'ethiopia', position: [5.1, 1.435, 2.25], iframeSrc: "https://rss.app/embed/v1/list/YBWgSn4bQbCyKJ8d" },
+  { id: 19, region: 'somali', position: [5.1, 1.5, 2.35], iframeSrc: "https://rss.app/embed/v1/list/DZsQKqP1T7tIscXl" },
+  { id: 20, region: 'egypt', position: [5.1, 1.1, 2.025], iframeSrc: "https://rss.app/embed/v1/list/KQrcmqDoXvsKuXLh" },
+  { id: 21, region: 'kenya', position: [5.1, 1.59, 2.2], iframeSrc: "https://rss.app/embed/v1/list/raLa4JrlAOywqv4V" },
+  { id: 22, region: 'south africa', position: [5.1, 2.0, 2.05], iframeSrc: "https://rss.app/embed/v1/list/YSrVjdgHVKZQBV8o" },
+  { id: 23, class:"iframe-saudi",region: 'saudi arabia', position: [5.1, 1.15, 2.35],iframeSrc: "https://rss.app/embed/v1/list/VQZRqmnKVIi4Pcwo" },
+];
+	  const markersData4 = [
+  // Each marker has [radius, phi, theta] format for spherical positioning
+  { id: 1, region: 'africa', position: [5.1, 1.2, 1.4], iframeSrc: "https://rss.app/embed/v1/list/aViQy1AA7saqQwdP" },
+  { id: 2, region: 'europe', position: [5.1, 0.7, 1.8], iframeSrc: "https://rss.app/embed/v1/list/VSdABUR2Hoc9FvfL" },
+  // Add other markers here...
+  { id: 3, region: 'america', position: [5.1, 0.9, -0.15], iframeSrc: "https://rss.app/embed/v1/list/H70mWzoc5k4uZlkm" },
+  { id: 4, region: 'south america', position: [5.1, 1.6, 0.4], iframeSrc: "https://rss.app/embed/v1/list/SHpWQD9ysobliT9H" },
+  { id: 5, region: 'middle east', position: [5.1, 1, 2.3],iframeSrc: "https://rss.app/embed/v1/list/JCYAnBzooyfhbDvO" },
+  { id: 6, region: 'asia', position: [5.1, 0.9, 3], iframeSrc: " https://rss.app/embed/v1/list/8oJAFwryVndrg9qh" },
+  { id: 7, region: 'japan', position: [5.1, 0.9, 4], iframeSrc: "https://rss.app/embed/v1/list/8E3wZRO4bLOzNAB2" },
+  { id: 8, region: 'carribbean', position: [5.1, 1.25, 0.15], iframeSrc: "https://rss.app/embed/v1/list/fCgGTq3kAHoZyiC4" },
+  { id: 9, region: 'uk', position: [5.1, 0.64, 1.55], iframeSrc: "https://rss.app/embed/v1/list/VD7IhqKGV9q59zWu" },
+  { id: 10, region: 'new york', position: [5.1, 0.9, 0.25], iframeSrc: "https://rss.app/embed/v1/list/xOKzp29XiJQsDy8s" },
+  { id: 11, region: 'florida', position: [5.1, 1.077, 0.14], iframeSrc: "https://rss.app/embed/v1/list/1XOUd8JEO4xYARbx" },
+  { id: 12, region: 'mexico', position: [5.1, 1.2, -0.2], iframeSrc: "https://rss.app/embed/v1/list/WsTF4RWpAxs7cW7E" },
+  { id: 13, region: 'brazil', position: [5.1, 1.8, 0.7], iframeSrc: "https://rss.app/embed/v1/list/MQopXDcvCJgbVrJq" },
+  { id: 14, region: 'argentina', position: [5.1, 2.2, 0.5], iframeSrc: "https://rss.app/embed/v1/list/N1io1zQOpLx05GCT" },
+  { id: 15, region: 'nigeria', position: [5.1, 1.435, 1.7], iframeSrc: "https://rss.app/embed/v1/list/sXONZKLJdsFOmQ6U" },
+  { id: 16, region: 'morocco', position: [5.1, 1.0, 1.65], iframeSrc: "https://rss.app/embed/v1/list/7PkBkOEXUzZ3wgTX" },
+  { id: 17, region: 'ghana', position: [5.1, 1.42, 1.57], iframeSrc: "https://rss.app/embed/v1/list/cyaVVDgVwKRbGGk3" },
+  { id: 18, region: 'ethiopia', position: [5.1, 1.435, 2.25], iframeSrc: "https://rss.app/embed/v1/list/qqUcYitAMkfTl9gc" },
+  { id: 19, region: 'somali', position: [5.1, 1.5, 2.35], iframeSrc: "https://rss.app/embed/v1/list/eYJEDl0n6NQ0vbXQ" },
+  { id: 20, region: 'egypt', position: [5.1, 1.1, 2.025], iframeSrc: "https://rss.app/embed/v1/list/1zENc8xlwLAD9N8j" },
+  { id: 21, region: 'kenya', position: [5.1, 1.59, 2.2], iframeSrc: "https://rss.app/embed/v1/list/BheyyzLtzcza5gF7" },
+  { id: 22, region: 'south africa', position: [5.1, 2.0, 2.05], iframeSrc: "https://rss.app/embed/v1/list/aGWKlWNxkC26vC5c" },
+  { id: 23, class:"iframe-saudi",region: 'saudi arabia', position: [5.1, 1.15, 2.35],iframeSrc: "https://rss.app/embed/v1/list/Lf7XMimoFVElTq81" },
+];
+	  const markersData5 = [
+  // Each marker has [radius, phi, theta] format for spherical positioning
+  { id: 1, region: 'africa', position: [5.1, 1.2, 1.4], iframeSrc: "https://rss.app/embed/v1/list/aViQy1AA7saqQwdP" },
+  { id: 2, region: 'europe', position: [5.1, 0.7, 1.8], iframeSrc: "https://rss.app/embed/v1/list/VSdABUR2Hoc9FvfL" },
+  // Add other markers here...
+  { id: 3, region: 'america', position: [5.1, 0.9, -0.15], iframeSrc: "https://rss.app/embed/v1/list/H70mWzoc5k4uZlkm" },
+  { id: 4, region: 'south america', position: [5.1, 1.6, 0.4], iframeSrc: "https://rss.app/embed/v1/list/SHpWQD9ysobliT9H" },
+  { id: 5, region: 'middle east', position: [5.1, 1, 2.3],iframeSrc: "https://rss.app/embed/v1/list/JCYAnBzooyfhbDvO" },
   { id: 6, region: 'asia', position: [5.1, 0.9, 3], iframeSrc: " https://rss.app/embed/v1/list/8oJAFwryVndrg9qh" },
   { id: 7, region: 'japan', position: [5.1, 0.9, 4], iframeSrc: "https://rss.app/embed/v1/list/8E3wZRO4bLOzNAB2" },
   { id: 8, region: 'carribbean', position: [5.1, 1.25, 0.15], iframeSrc: "https://rss.app/embed/v1/list/fCgGTq3kAHoZyiC4" },
@@ -9096,7 +9223,7 @@ scene.add(markers);
 }
 
   
-  loadGenericMarkers(markersData);
+  //loadGenericMarkers(markersData);
 // Labels, Raycasting, and Interactions (leave as is from your original logic)
 // Assuming each marker has a reference in the HTML list and vice versa
 function highlightMarker(markerId) {
@@ -11879,6 +12006,8 @@ const Locationsfixed = {
 "columbus": {"lat": 39.9612, "lng": -82.9988},
 "charlotte": {"lat": 35.2271, "lng": -80.8431},
 "americas": {"lat": 16.0, "lng": -85.0, "zoom": 1.3},
+"antigua": {"lat": 17.0608, "lng": -61.7964, "zoom": 1.3},
+"barbuda": {"lat": 17.0608, "lng": -61.7964, "zoom": 1.3},
 "antigua and barbuda": {"lat": 17.0608, "lng": -61.7964, "zoom": 1.3},
 "argentina": {"lat": -38.4161, "lng": -63.6167, "zoom": 1.3},
 "bahamas": {"lat": 25.0343, "lng": -77.3963, "zoom": 1.3},
@@ -11935,6 +12064,7 @@ const Locationsfixed = {
 "saint lucia": {"lat": 13.9094, "lng": -60.9789, "zoom": 1.3},
 "saint vincent and the grenadines": {"lat": 13.2528, "lng": -61.1971, "zoom": 1.3},
 "suriname": {"lat": 3.9193, "lng": -56.0278, "zoom": 1.3},
+"trinidad": {"lat": 10.6918, "lng": -61.2225, "zoom": 1.3},
 "trinidad and tobago": {"lat": 10.6918, "lng": -61.2225, "zoom": 1.3},
 "united states": {"lat": 37.0902, "lng": -95.7129, "zoom": 1.3},
 "uruguay": {"lat": -32.5228, "lng": -55.7658, "zoom": 1.3},
@@ -14477,7 +14607,7 @@ directionalLight.intensity = 0.5;
 dl2.intensity = 0.5;
 dl3.intensity = 0.5;
     // Markers Data
-  const markersData2 = [
+  /*const markersData2 = [
     {
       //Africa
       id: 1,
@@ -14596,7 +14726,7 @@ dl3.intensity = 0.5;
       scrolling:"yes",
       allowfullscreen:"true"
     },
-  ];
+  ];*/
   const markersDataforCheapestAirbnbs = [
     {
       //Africa
@@ -15045,7 +15175,11 @@ contentDiv.style.zIndex = '22009'; // Adjust the value as needed
 
   // CSS2DObject
   const labelObject = new CSS2DObject(labelDiv);
+	if (data.worldPosition) {
   labelObject.position.copy(data.worldPosition);
+		} else {
+  console.warn(`worldPosition not yet defined for marker ${data.id}`);
+}
   scene.add(labelObject);
 
   // Store label object for interaction
@@ -15158,18 +15292,23 @@ window.addEventListener('pointerdown', (event) => {
 	  // Define different markers data sets
 const markersDataSets = {
     general: markersData,
-  cheapest: markersDataforCheapestAirbnbs,
-  midPrice: markersDataforMidPriceAirbnbs,
-  expensive: markersDataforExpensiveAirbnbs,
+  cheapest: markersData2,
+  midPrice: markersData3,
+  expensive: markersData,
+cheapest2: markersData4,
+  midPrice2: markersData5,
+  expensive2: markersData,
 };
 
 let activeMarkersData = markersData; // Default to markersData
 let activeLabel = null; // Keep track of open iframe
-//let markers; // Declare it outside, so it is accessible globally.
+let markers; // Declare it outside, so it is accessible globally.
 
 function loadMarkers(selectedCategory) {
   // Remove existing markers from the scene
-  //scene.remove(markers);
+	if (markers) {
+  scene.remove(markers);
+	}
 	console.log('Selected category:', selectedCategory);
   console.log('Available categories:', markersDataSets);
   console.log('Markers Data Sets:', markersDataSets);
@@ -15180,10 +15319,10 @@ function loadMarkers(selectedCategory) {
     activeMarkersData = []; // Set it to an empty array to prevent further errors
   }
   // Create new markers for the selected category
-  //const markerCount = activeMarkersData.length;
-  //const markers = new THREE.InstancedMesh(markerGeometry, markerMaterial, markerCount);
+  const markerCount = activeMarkersData.length;
+  markers = new THREE.InstancedMesh(markerGeometry, markerMaterial, markerCount);
   //const dummy = new THREE.Object3D();
-//const dummy = new THREE.Object3D();
+const dummy = new THREE.Object3D();
   activeMarkersData.forEach((data, index) => {
     const [radius, phi, theta] = data.position;
     dummy.position.setFromSphericalCoords(radius, phi, theta);
@@ -15193,7 +15332,7 @@ function loadMarkers(selectedCategory) {
     data.worldPosition = dummy.position.clone();
   });
 
-  //scene.add(markers);
+  scene.add(markers);
 
   // Add interactivity to the new markers
   setupMarkerInteraction();
@@ -15266,9 +15405,9 @@ setTimeout(() => {
         right: 85px; 
         background: none; 
         border: none; 
-        color: rgba(255, 255, 255, 0.35); 
+        color: rgba(255, 255, 255, 0.65); 
         cursor: pointer;
-        display: none;">
+        display: flex;">
         ● ● ●
       </button>
       <select id="priceCategorySelect-${data.id}" style=
@@ -15276,12 +15415,12 @@ setTimeout(() => {
       "top: 350px !important;"
       "right:30px !important;"
       >
-        <optgroup label="Region-Specific Categories">
-          <option value="disabled">Sort by (Region)📍</option>
-          <option value="popular">Most Popular (in Region)📍</option>
-          <option value="cheapest">Cheapest📍</option>
-          <option value="midPrice">Mid Price📍</option>
-          <option value="expensive">Expensive📍</option>
+        <optgroup label="Filter by Ratings">
+          <option value="disabled">Sort by Rating🌟🌟🌟🌟🌟</option>
+          <option value="general">Most Popular in Region🏆</option>
+          <option value="cheapest">3 star rating🌟🌟🌟</option>
+          <option value="midPrice">4 star rating🌟🌟🌟🌟</option>
+          <option value="expensive">5 star rating🌟🌟🌟🌟🌟</option>
         </optgroup>
       </select>
       <select id="airbnbSelector-${data.id}" style=
@@ -15289,12 +15428,12 @@ setTimeout(() => {
       "top: 350px !important;"
       "right:30px !important;"
       >
-        <optgroup label="World Categories">
-          <option value="disabled">Sort by (Across the World) 🌍</option>
-          <option value="general">Most Popular (Across the World)🌍</option>
-          <option value="cheapest">Cheapest🌍</option>
-          <option value="midPrice">Mid Price🌍</option>
-          <option value="expensive">Most Expensive🌍</option>
+        <optgroup label="Price Filter">
+          <option value="disabled">Sort by Price (Across Region)🌍💸</option>
+          <option value="general">Most Popular in Region🌎🏆</option>
+          <option value="cheapest2">Low Price💸💸💸</option>
+          <option value="midPrice2">Mid Price💸💸💸💸</option>
+          <option value="expensive2">Expensive💸💸💸💸💸</option>
         </optgroup>
       </select>
     `;
@@ -15314,6 +15453,16 @@ const toggleButton = document.getElementById(`toggleAirbnbPrices-${data.id}`);
       priceCategorySelect.style.display = priceSelectVisible ? 'none' : 'block';
       airbnbSelector.style.display = airbnbSelectVisible ? 'none' : 'block';
     });
+// Bind dropdown change events to dynamic elements
+priceCategorySelect.addEventListener('change', function () {
+  const selectedCategory = this.value;
+  loadMarkers(selectedCategory);
+});
+
+airbnbSelector.addEventListener('change', function () {
+  const selectedCategory = this.value;
+  loadMarkers(selectedCategory);
+});
 
     // Close both dropdowns when clicking outside
     document.addEventListener('click', function (event) {
